@@ -1,0 +1,6 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <p><small>{{ .Date.Format "Jan 2, 2006" }}</small></p>
+  {{ .Content }}
+  <p><em>AI-generated. Not medical advice.</em></p>
+{{ end }}

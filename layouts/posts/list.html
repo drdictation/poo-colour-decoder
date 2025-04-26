@@ -1,0 +1,11 @@
+{{ define "main" }}
+  <h1>Daily Poo Facts Archive</h1>
+  <ul>
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <small>— {{ .Date.Format "Jan 2, 2006" }}</small>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
