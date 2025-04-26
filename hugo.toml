@@ -2,6 +2,6 @@ baseURL = "https://poopcolor.info/"
 languageCode = "en-us"
 title = "Poo Colour Decoder"
 disableKinds = ["taxonomy", "taxonomyTerm"]
-enableRobotsTXT = true
+enableRobotsTXT = false
 [params]
   paginationPagerSize = 10
