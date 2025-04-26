@@ -1,11 +1,23 @@
-{{ define "main" }}
-  <h1>Daily Poo Facts Archive</h1>
-  <ul>
-    {{ range .Pages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <small>— {{ .Date.Format "Jan 2, 2006" }}</small>
-      </li>
-    {{ end }}
-  </ul>
-{{ end }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Poo Facts Archive</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Daily Poo Facts Archive</h1>
+    <ul>
+      {{ range .Pages }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <small>— {{ .Date.Format "Jan 2, 2006" }}</small>
+        </li>
+      {{ end }}
+    </ul>
+    <p><a href="/">← Back to decoder</a></p>
+  </div>
+</body>
+</html>

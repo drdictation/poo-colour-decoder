@@ -1,0 +1,23 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  margin: 0; padding: 0;
+}
+.container {
+  max-width: 700px; margin: 40px auto;
+  background: #fff; padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 6px;
+}
+h1, h2 { text-align: center; margin-bottom: 1rem; }
+.decoder { text-align: center; margin: 20px 0; }
+input[type="file"] { padding: 8px; }
+.result { margin-top: 20px; }
+.swatch {
+  width: 60px; height: 60px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 auto 10px;
+}
+.placeholder { color: #777; text-align: center; }

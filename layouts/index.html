@@ -1,20 +1,30 @@
-{{ define "main" }}
-  <h1>Poo Colour Decoder</h1>
-  <p><strong>100 % private:</strong> everything runs in your browser.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p><strong>100 % private:</strong> everything runs in your browser.</p>
 
-  <div class="decoder">
-    <input type="file" id="file" accept="image/*">
-    <canvas id="can" style="display:none;"></canvas>
+    <div class="decoder">
+      <input type="file" id="file" accept="image/*">
+      <canvas id="can" style="display:none;"></canvas>
+    </div>
+
+    <div id="result" class="result">
+      <p class="placeholder">Upload a photo to decode its colour...</p>
+    </div>
+
+    <hr>
+
+    <h2>Daily Poo Facts</h2>
+    <p><a href="/posts/">Browse the archive →</a></p>
   </div>
-
-  <div id="result" class="result">
-    <p class="placeholder">Upload a photo to decode its colour...</p>
-  </div>
-
-  <hr>
-
-  <h2>Daily Poo Facts</h2>
-  <p><a href="/posts/">Browse the archive →</a></p>
 
   <script src="https://cdn.jsdelivr.net/npm/colorthief@2/dist/color-thief.umd.js"></script>
   <script>
