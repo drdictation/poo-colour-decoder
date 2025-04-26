@@ -10,9 +10,10 @@
   <div class="container">
     <h1>Daily Poo Facts Archive</h1>
 
-    {{ if gt (len .Pages) 0 }}
+    {{ $posts := where site.RegularPages "Section" "posts" }}
+    {{ if gt (len $posts) 0 }}
       <ul class="archive-list">
-        {{ range sort .Pages "Date" "desc" }}
+        {{ range sort $posts "Date" "desc" }}
           <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             <span class="archive-date">{{ .Date.Format "Jan 2, 2006" }}</span>

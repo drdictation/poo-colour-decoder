@@ -1,3 +1,4 @@
+disableKinds = ["taxonomy", "taxonomyTerm"]
 baseURL = "https://yourcustomdomain.com/"
 languageCode = "en-us"
 title = "Poo Colour Decoder"
