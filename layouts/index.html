@@ -1,0 +1,63 @@
+<h1>Poo Colour Decoder</h1>
+
+<p><strong>100 % private:</strong> the photo is processed only in your browser.</p>
+
+<input type="file" id="file" accept="image/*">
+<canvas id="can" style="display:none;"></canvas>
+<p id="result"></p>
+
+<hr>
+<h2>Daily Poo Facts</h2>
+<p><a href="/posts/">Browse the archive →</a></p>
+
+<script src="https://cdn.jsdelivr.net/npm/colorthief@2/dist/color-thief.umd.js"></script>
+<script>
+const file   = document.getElementById('file');
+const can    = document.getElementById('can');
+const ctx    = can.getContext('2d');
+const thief  = new ColorThief();
+const result = document.getElementById('result');
+
+file.onchange = ev => {
+  const img = new Image();
+  img.onload = () => {
+    can.width  = img.width;
+    can.height = img.height;
+    ctx.drawImage(img,0,0);
+    const [r,g,b] = thief.getColor(can);
+    fetch('/blurbs.json').then(r=>r.json()).then(blurbs=>{
+      const c = classify(r,g,b);
+      result.innerHTML = `<h2>${c.title}</h2><p>${blurbs[c.key]}</p>`;
+    });
+  };
+  img.src = URL.createObjectURL(ev.target.files[0]);
+};
+
+function classify(r,g,b){
+  const h = rgb2hsl(r,g,b)[0];
+  if (h <20 || h>340) return {key:'red',   title:'Red / Maroon'};
+  if (h <40)          return {key:'brown', title:'Normal Brown'};
+  if (h <75)          return {key:'yellow',title:'Yellow'};
+  if (h <150)         return {key:'green', title:'Green'};
+  if (h <260)         return {key:'black', title:'Black'};
+  return {key:'pale',  title:'Pale / Clay'};
+}
+function rgb2hsl(r,g,b){
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b);
+  let h,s,l=(max+min)/2, d=max-min;
+  if(!d){h=s=0;}
+  else{
+    s=l>0.5?d/(2-max-min):d/(max+min);
+    switch(max){
+      case r: h=(g-b)/d+(g<b?6:0); break;
+      case g: h=(b-r)/d+2; break;
+      case b: h=(r-g)/d+4; break;
+    }
+    h*=60;
+  }
+  return [h,s,l];
+}
+</script>
+
+<p><em>Disclaimer — Not medical advice. Persistent colour changes or bleeding warrant professional review.</em></p>
