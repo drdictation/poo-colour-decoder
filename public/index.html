@@ -1,0 +1,29 @@
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.146.7"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Welcome to Poo Colour Decoder</title>
+<link rel=stylesheet href=/css/styles.css></head><body><div class=container><div class=disclaimer-entertainment><strong>For entertainment only:</strong> this tool is not a medical device.</div><h1>Welcome to Poo Colour Decoder</h1><p><strong>100 % private:</strong> everything runs in your browser.</p><div class=ad-slot id=ad-top></div><div class=decoder><input type=file id=file accept=image/*>
+<canvas id=can style=display:none></canvas></div><div id=result class=result><p class=placeholder>Upload a photo to decode its colour…</p></div><div class=ad-slot id=ad-bottom></div><hr><h2>Daily Poo Facts</h2><p><a href=/posts/>Browse the archive →</a></p><div class=disclaimer-medical><p><em>Not medical advice. If you have health concerns, consult a qualified medical professional.</em></p></div></div><script>console.log("▶ Decoder script loaded");const fileInput=document.getElementById("file"),canvas=document.getElementById("can"),ctx=canvas.getContext("2d"),resultDiv=document.getElementById("result"),idealBrown={h:30,s:.6,l:.35};function rgbToHex(e,t,n){return"#"+[e,t,n].map(e=>e.toString(16).padStart(2,"0")).join("")}function rgb2hsl(e,t,n){e/=255,t/=255,n/=255;const o=Math.max(e,t,n),a=Math.min(e,t,n),s=o-a;let i=0,r=0,c=(o+a)/2;if(s){switch(r=c>.5?s/(2-o-a):s/(o+a),o){case e:i=(t-n)/s+(t<n?6:0);break;case t:i=(n-e)/s+2;break;case n:i=(e-t)/s+4;break}i*=60}return[i,r,c]}function classify(e){return e<20||e>340?{key:"red",title:"Red / Maroon"}:e<40?{key:"brown",title:"Normal Brown"}:e<75?{key:"yellow",title:"Yellow"}:e<150?{key:"green",title:"Green"}:e<260?{key:"black",title:"Black"}:{key:"pale",title:"Pale / Clay"}}const foods={brown:{eat:["Whole grains","Leafy vegetables","Apples & berries"],avoid:["Excess fats","Artificial dyes"]},red:{eat:["Hydrating fluids","Low-pigment foods"],avoid:["Beetroot","Red food coloring"]},green:{eat:["Fiber-rich fruits","Yogurt"],avoid:["Excess spinach","Green dyes"]},yellow:{eat:["Lean proteins","Cooked veggies"],avoid:["Greasy foods","Heavy dairy"]},black:{eat:["Vitamin K foods","Fiber"],avoid:["Iron supplements","Charcoal foods"]},pale:{eat:["Healthy fats","Bile-boosting foods (eggs)"],avoid:["Antacids","Fried foods"]}};fileInput.addEventListener("change",e=>{const n=e.target.files[0];if(!n)return;resultDiv.innerHTML="";const t=new Image;t.onload=()=>{canvas.width=t.naturalWidth,canvas.height=t.naturalHeight,ctx.drawImage(t,0,0);const m=Math.floor(canvas.width/2),h=Math.floor(canvas.height/2),[r,o,i]=ctx.getImageData(m,h,1,1).data,u=rgbToHex(r,o,i),[n,c,a]=rgb2hsl(r,o,i),e=classify(n),s=(n-idealBrown.h)/360,l=c-idealBrown.s,d=a-idealBrown.l,f=Math.sqrt(s*s+l*l+d*d),p=Math.max(0,Math.round((1-f/.5)*100));fetch("/blurbs.json").then(e=>e.json()).then(t=>{const o=t[e.key]||"",s=foods[e.key];resultDiv.innerHTML=`
+              <div class="swatch" style="background:${u}"></div>
+              <h3>${e.title}</h3>
+
+              <div class="metric"><span>Brown Closeness:</span>${p}%</div>
+              <div class="metric"><span>Hue:</span>${Math.round(n)}°</div>
+              <div class="metric"><span>Saturation:</span>${Math.round(c*100)}%</div>
+              <div class="metric"><span>Lightness:</span>${Math.round(a*100)}%</div>
+
+              <p>${o}</p>
+
+              <div class="foods">
+                <div>
+                  <h4>Eat</h4>
+                  <ul>${s.eat.map(e=>`<li>${e}</li>`).join("")}</ul>
+                </div>
+                <div>
+                  <h4>Avoid</h4>
+                  <ul>${s.avoid.map(e=>`<li>${e}</li>`).join("")}</ul>
+                </div>
+              </div>
+
+              <p class="normal-range">
+                <strong>Normal Brown Range:</strong>
+                Hue 15–45°, Sat 30–60%, Light 20–50%
+              </p>
+            `})},t.src=URL.createObjectURL(n)})</script></body></html>
