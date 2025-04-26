@@ -1,0 +1,6 @@
+baseURL = "https://yourcustomdomain.com/"  # update after buying domain
+languageCode = "en-us"
+title = "Poo Colour Decoder"
+paginate = 10
+enableRobotsTXT = true
+theme = ""   # using custom layouts only
