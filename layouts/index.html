@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ .Title }}</title>
   <link rel="stylesheet" href="/css/styles.css">
-  <style>
-    /* Extra “scientific” styling */
-    .result { padding: 1rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 1rem; background: #fafafa; }
-    .result h3 { margin-top: 0; }
-    .metric { display: flex; justify-content: space-between; margin: .5rem 0; }
-    .metric span { font-weight: bold; }
-    .foods { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .foods div { background: #fff; padding: .5rem; border-radius: 4px; border: 1px solid #ddd; }
-    .normal-range { font-size: .9rem; color: #555; margin-top: .5rem; }
-  </style>
 </head>
 <body>
   <div class="container">
+
+    <!-- Entertainment disclaimer -->
+    <div class="disclaimer-entertainment">
+      <strong>For entertainment only:</strong> this tool is not a medical device.
+    </div>
+
     <h1>{{ .Title }}</h1>
-    <p><strong>100 % private:</strong> everything runs in your browser.</p>
+    <p><strong>100 % private:</strong> everything runs in your browser.</p>
+
+    <!-- Ad slot top -->
+    <div class="ad-slot" id="ad-top">
+      <!-- Paste your AdSense code here -->
+    </div>
 
     <div class="decoder">
       <input type="file" id="file" accept="image/*">
@@ -30,65 +31,82 @@
       <p class="placeholder">Upload a photo to decode its colour…</p>
     </div>
 
+    <!-- Ad slot bottom -->
+    <div class="ad-slot" id="ad-bottom">
+      <!-- Paste your AdSense code here -->
+    </div>
+
     <hr>
 
     <h2>Daily Poo Facts</h2>
     <p><a href="/posts/">Browse the archive →</a></p>
+
+    <!-- Medical disclaimer -->
+    <div class="disclaimer-medical">
+      <p><em>Not medical advice. If you have health concerns, consult a qualified medical professional.</em></p>
+    </div>
   </div>
 
   <script>
     console.log("▶ Decoder script loaded");
+
     const fileInput = document.getElementById('file'),
           canvas    = document.getElementById('can'),
           ctx       = canvas.getContext('2d'),
           resultDiv = document.getElementById('result');
 
-    // Target “ideal brown” in HSL for closeness calculation
-    const idealBrown = { h: 30, s: .6, l: .35 };
+    // Ideal brown for “closeness” metric
+    const idealBrown = { h: 30, s: 0.6, l: 0.35 };
 
-    function rgbToHex(r,g,b){ return "#"+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join(''); }
-    function rgb2hsl(r,g,b){
+    function rgbToHex(r,g,b) {
+      return "#" + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join('');
+    }
+
+    function rgb2hsl(r,g,b) {
       r/=255; g/=255; b/=255;
-      const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
-      let h=0,s=0,l=(max+min)/2;
-      if(d){ s = l>0.5 ? d/(2-max-min) : d/(max+min);
+      const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max-min;
+      let h=0, s=0, l=(max+min)/2;
+      if(d){
+        s = l>0.5 ? d/(2-max-min) : d/(max+min);
         switch(max){
           case r: h=(g-b)/d + (g<b?6:0); break;
           case g: h=(b-r)/d + 2; break;
           case b: h=(r-g)/d + 4; break;
         }
-        h*=60;
+        h *= 60;
       }
       return [h,s,l];
     }
-    function classify(h){
-      if(h<20||h>340) return {key:'red',   title:'Red / Maroon'};
-      if(h<40)       return {key:'brown', title:'Normal Brown'};
-      if(h<75)       return {key:'yellow',title:'Yellow'};
-      if(h<150)      return {key:'green', title:'Green'};
-      if(h<260)      return {key:'black', title:'Black'};
-      return {key:'pale',  title:'Pale / Clay'};
+
+    function classify(h) {
+      if(h<20||h>340) return { key:'red', title:'Red / Maroon' };
+      if(h<40)       return { key:'brown', title:'Normal Brown' };
+      if(h<75)       return { key:'yellow', title:'Yellow' };
+      if(h<150)      return { key:'green', title:'Green' };
+      if(h<260)      return { key:'black', title:'Black' };
+      return { key:'pale', title:'Pale / Clay' };
     }
-    // Foods recommendations
+
+    // Eat/Avoid recommendations
     const foods = {
       brown: {
         eat:   ["Whole grains","Leafy vegetables","Apples & berries"],
         avoid: ["Excess fats","Artificial dyes"]
       },
       red: {
-        eat:   ["Beet-free meals","Hydrating fluids"],
+        eat:   ["Hydrating fluids","Low-pigment foods"],
         avoid: ["Beetroot","Red food coloring"]
       },
       green: {
-        eat:   ["Fiber-rich fruits","Yogurt for gut flora"],
+        eat:   ["Fiber-rich fruits","Yogurt"],
         avoid: ["Excess spinach","Green dyes"]
       },
       yellow: {
-        eat:   ["Lean proteins","Cooked vegetables"],
+        eat:   ["Lean proteins","Cooked veggies"],
         avoid: ["Greasy foods","Heavy dairy"]
       },
       black: {
-        eat:   ["Vitamin K foods","Fiber"], 
+        eat:   ["Vitamin K foods","Fiber"],
         avoid: ["Iron supplements","Charcoal foods"]
       },
       pale: {
@@ -100,54 +118,64 @@
     fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
       if(!file) return;
-      resultDiv.innerHTML = ''; 
+      resultDiv.innerHTML = ''; // clear
+
       const img = new Image();
       img.onload = () => {
-        canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
-        ctx.drawImage(img,0,0);
-        // sample center pixel
-        const x = Math.floor(canvas.width/2), y = Math.floor(canvas.height/2);
+        canvas.width  = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        ctx.drawImage(img, 0, 0);
+
+        // Sample center pixel
+        const x = Math.floor(canvas.width/2),
+              y = Math.floor(canvas.height/2);
         const [r,g,b] = ctx.getImageData(x,y,1,1).data;
-        const hex = rgbToHex(r,g,b), [h,s,l] = rgb2hsl(r,g,b);
-        const cls = classify(h);
-        // compute “closeness” to ideal brown: inverse of Euclidean dist in HSL
-        const dh = (h - idealBrown.h)/360, ds = s-idealBrown.s, dl = l-idealBrown.l;
-        const dist = Math.sqrt(dh*dh + ds*ds + dl*dl);
-        const closeness = Math.max(0, Math.round((1 - dist/0.5)*100)); // normalized ~50° radius
 
-        // render
-        const blurbPromise = fetch('/blurbs.json').then(r=>r.json());
-        blurbPromise.then(blurbs => {
-          const explanation = blurbs[cls.key] || "";
-          const rec = foods[cls.key];
-          resultDiv.innerHTML = `
-            <div class="swatch" style="background:${hex}"></div>
-            <h3>${cls.title}</h3>
+        const hex = rgbToHex(r,g,b),
+              [h,s,l] = rgb2hsl(r,g,b),
+              cls     = classify(h);
 
-            <div class="metric"><span>Brown closeness:</span>${closeness}%</div>
-            <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
-            <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
-            <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
+        // Brown‐closeness metric
+        const dh = (h - idealBrown.h)/360,
+              ds = s - idealBrown.s,
+              dl = l - idealBrown.l,
+              dist = Math.sqrt(dh*dh + ds*ds + dl*dl),
+              closeness = Math.max(0, Math.round((1 - dist/0.5)*100));
 
-            <p>${explanation}</p>
+        fetch('/blurbs.json')
+          .then(res => res.json())
+          .then(blurbs => {
+            const blurb = blurbs[cls.key] || '';
+            const rec = foods[cls.key];
 
-            <div class="foods">
-              <div>
-                <h4>Eat</h4>
-                <ul>${rec.eat.map(f=>`<li>${f}</li>`).join("")}</ul>
+            resultDiv.innerHTML = `
+              <div class="swatch" style="background:${hex}"></div>
+              <h3>${cls.title}</h3>
+
+              <div class="metric"><span>Brown Closeness:</span>${closeness}%</div>
+              <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
+              <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
+              <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
+
+              <p>${blurb}</p>
+
+              <div class="foods">
+                <div>
+                  <h4>Eat</h4>
+                  <ul>${rec.eat.map(f=>`<li>${f}</li>`).join('')}</ul>
+                </div>
+                <div>
+                  <h4>Avoid</h4>
+                  <ul>${rec.avoid.map(f=>`<li>${f}</li>`).join('')}</ul>
+                </div>
               </div>
-              <div>
-                <h4>Avoid</h4>
-                <ul>${rec.avoid.map(f=>`<li>${f}</li>`).join("")}</ul>
-              </div>
-            </div>
 
-            <p class="normal-range">
-              <strong>Normal Brown Range:</strong>
-              Hue 15°–45°, Sat 30%–60%, Lightness 20%–50%
-            </p>
-          `;
-        });
+              <p class="normal-range">
+                <strong>Normal Brown Range:</strong>
+                Hue 15–45°, Sat 30–60%, Light 20–50%
+              </p>
+            `;
+          });
       };
       img.src = URL.createObjectURL(file);
     });
