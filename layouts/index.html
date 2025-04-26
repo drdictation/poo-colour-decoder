@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ .Title }}</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -17,7 +17,7 @@
     </div>
 
     <div id="result" class="result">
-      <p class="placeholder">Upload a photo to decode its colour...</p>
+      <p class="placeholder">Upload a photo to decode its colour…</p>
     </div>
 
     <hr>
@@ -26,8 +26,9 @@
     <p><a href="/posts/">Browse the archive →</a></p>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/colorthief@2.3.2/dist/color-thief.umd.js"></script>
   <script>
+    console.log("▶️ Decoder script loaded");
+
     const fileInput = document.getElementById('file');
     const canvas    = document.getElementById('can');
     const ctx       = canvas.getContext('2d');
@@ -36,10 +37,11 @@
     function rgbToHex(r,g,b){
       return "#" + [r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
     }
+
     function rgb2hsl(r,g,b){
       r/=255; g/=255; b/=255;
       const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max-min;
-      let h=0, s=0, l=(max+min)/2;
+      let h=0,s=0,l=(max+min)/2;
       if(d){
         s = l>0.5 ? d/(2-max-min) : d/(max+min);
         switch(max){
@@ -51,6 +53,7 @@
       }
       return [h,s,l];
     }
+
     function classify(h){
       if(h<20||h>340) return {key:'red', title:'Red / Maroon'};
       if(h<40)       return {key:'brown', title:'Normal Brown'};
@@ -63,27 +66,35 @@
     fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
       if(!file) return;
-      resultDiv.innerHTML = '';  // clear previous
+      console.log("📂 File selected:", file.name);
+
+      resultDiv.innerHTML = '';  // clear placeholder
+
       const img = new Image();
       img.onload = () => {
-        canvas.width  = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img,0,0);
-        const thief = new ColorThief();
-        let rgb;
-        try {
-          rgb = thief.getColor(canvas);
-        } catch(err) {
-          resultDiv.innerHTML = '<p class="error">Error analysing image. Try a clearer photo.</p>';
-          return;
-        }
-        const [r,g,b] = rgb;
-        const hex     = rgbToHex(r,g,b);
-        const [h,s,l] = rgb2hsl(r,g,b);
-        const {key,title} = classify(h);
+        // draw into canvas
+        canvas.width  = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        ctx.drawImage(img, 0, 0);
+
+        // sample center pixel
+        const x = Math.floor(canvas.width / 2);
+        const y = Math.floor(canvas.height / 2);
+        const [r, g, b] = ctx.getImageData(x, y, 1, 1).data;
+        console.log("🎨 Center pixel:", r, g, b);
+
+        const hex = rgbToHex(r, g, b);
+        const [h, s, l] = rgb2hsl(r, g, b);
+        const {key, title} = classify(h);
+
+        console.log("🔍 Fetching blurbs.json");
         fetch('/blurbs.json')
-          .then(res=>res.json())
-          .then(blurbs=>{
+          .then(res => {
+            console.log("📥 blurbs.json status:", res.status);
+            return res.json();
+          })
+          .then(blurbs => {
+            console.log("📖 blurbs loaded:", blurbs[key]);
             const blurb = blurbs[key] || 'No explanation available.';
             resultDiv.innerHTML = `
               <div class="swatch" style="background:${hex}"></div>
@@ -93,7 +104,15 @@
               <p><strong>HSL:</strong> ${Math.round(h)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%</p>
               <p>${blurb}</p>
             `;
+          })
+          .catch(err => {
+            console.error("❌ Error loading blurbs.json:", err);
+            resultDiv.innerHTML = '<p class="error">Could not load explanations.</p>';
           });
+      };
+      img.onerror = err => {
+        console.error("❌ Image load error:", err);
+        resultDiv.innerHTML = '<p class="error">Failed to load image.</p>';
       };
       img.src = URL.createObjectURL(file);
     });
