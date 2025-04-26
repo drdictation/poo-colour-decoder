@@ -90,5 +90,75 @@
         return [h,s,l];
       }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/colorthief@2/dist/color-thief.umd.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const file   = document.getElementById('file');
+        const can    = document.getElementById('can');
+        const ctx    = can.getContext('2d');
+        const thief  = new ColorThief();
+        const result = document.getElementById('result');
+    
+        file.addEventListener('change', ev => {
+          const img = new Image();
+          img.onload = () => {
+            try {
+              can.width  = img.width;
+              can.height = img.height;
+              ctx.drawImage(img,0,0);
+    
+              const [r, g, b] = thief.getColor(can);
+              const hex = rgbToHex(r, g, b);
+              const [h, s, l] = rgb2hsl(r, g, b);
+    
+              fetch('/blurbs.json')
+                .then(res => res.json())
+                .then(blurbs => {
+                  const c = classify(h);
+                  result.innerHTML = `
+                    <div class="swatch" style="background:${hex}"></div>
+                    <h3>${c.title}</h3>
+                    <p><strong>RGB:</strong> ${r},${g},${b}</p>
+                    <p><strong>HEX:</strong> ${hex}</p>
+                    <p><strong>HSL:</strong> ${Math.round(h)}°, ${Math.round(s*100)}%, ${Math.round(l*100)}%</p>
+                    <p>${blurbs[c.key]}</p>
+                  `;
+                });
+            } catch (err) {
+              result.innerHTML = `<p style="color:red">Error analysing image. Try a clearer photo.</p>`;
+              console.error(err);
+            }
+          };
+          img.src = URL.createObjectURL(file.files[0]);
+        });
+    
+        function classify(h) {
+          if (h < 20 || h > 340) return { key: 'red',    title: 'Red / Maroon' };
+          if (h < 40)            return { key: 'brown',  title: 'Normal Brown' };
+          if (h < 75)            return { key: 'yellow', title: 'Yellow' };
+          if (h < 150)           return { key: 'green',  title: 'Green' };
+          if (h < 260)           return { key: 'black',  title: 'Black' };
+          return                 { key: 'pale',   title: 'Pale / Clay' };
+        }
+    
+        function rgbToHex(r,g,b) {
+          return "#" + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join('');
+        }
+    
+        function rgb2hsl(r,g,b){
+          r/=255; g/=255; b/=255;
+          const max=Math.max(r,g,b), min=Math.min(r,g,b);
+          let h,s,l=(max+min)/2, d=max-min;
+          if (!d) return [0, 0, l];
+          s = l>0.5 ? d/(2-max-min) : d/(max+min);
+          switch(max){
+            case r: h = (g-b)/d + (g<b?6:0); break;
+            case g: h = (b-r)/d + 2; break;
+            case b: h = (r-g)/d + 4; break;
+          }
+          return [h*60, s, l];
+        }
+      });
+    </script>
   </body>
 </html>
