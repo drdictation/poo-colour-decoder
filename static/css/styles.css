@@ -26,3 +26,9 @@ input[type="file"] { padding: 8px; }
     text-align: center;
     font-weight: bold;
   }
+  .swatch { width: 80px; height: 80px; border: 2px solid #444; margin: 0 auto 1rem; border-radius: 4px; }
+.metric { font-size: .95rem; display: flex; justify-content: space-between; padding: .2rem 0; }
+.metric span { color: #555; }
+.foods { margin-top: 1rem; }
+.foods h4 { margin: .5rem 0 .2rem; }
+.normal-range { font-style: italic; margin-top: 1rem; }

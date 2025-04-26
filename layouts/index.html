@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ .Title }}</title>
   <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Extra “scientific” styling */
+    .result { padding: 1rem; border: 1px solid #ccc; border-radius: 6px; margin-top: 1rem; background: #fafafa; }
+    .result h3 { margin-top: 0; }
+    .metric { display: flex; justify-content: space-between; margin: .5rem 0; }
+    .metric span { font-weight: bold; }
+    .foods { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .foods div { background: #fff; padding: .5rem; border-radius: 4px; border: 1px solid #ddd; }
+    .normal-range { font-size: .9rem; color: #555; margin-top: .5rem; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -27,92 +37,117 @@
   </div>
 
   <script>
-    console.log("▶️ Decoder script loaded");
+    console.log("▶ Decoder script loaded");
+    const fileInput = document.getElementById('file'),
+          canvas    = document.getElementById('can'),
+          ctx       = canvas.getContext('2d'),
+          resultDiv = document.getElementById('result');
 
-    const fileInput = document.getElementById('file');
-    const canvas    = document.getElementById('can');
-    const ctx       = canvas.getContext('2d');
-    const resultDiv = document.getElementById('result');
+    // Target “ideal brown” in HSL for closeness calculation
+    const idealBrown = { h: 30, s: .6, l: .35 };
 
-    function rgbToHex(r,g,b){
-      return "#" + [r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
-    }
-
+    function rgbToHex(r,g,b){ return "#"+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join(''); }
     function rgb2hsl(r,g,b){
       r/=255; g/=255; b/=255;
-      const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max-min;
+      const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
       let h=0,s=0,l=(max+min)/2;
-      if(d){
-        s = l>0.5 ? d/(2-max-min) : d/(max+min);
+      if(d){ s = l>0.5 ? d/(2-max-min) : d/(max+min);
         switch(max){
           case r: h=(g-b)/d + (g<b?6:0); break;
           case g: h=(b-r)/d + 2; break;
           case b: h=(r-g)/d + 4; break;
         }
-        h *= 60;
+        h*=60;
       }
       return [h,s,l];
     }
-
     function classify(h){
-      if(h<20||h>340) return {key:'red', title:'Red / Maroon'};
+      if(h<20||h>340) return {key:'red',   title:'Red / Maroon'};
       if(h<40)       return {key:'brown', title:'Normal Brown'};
-      if(h<75)       return {key:'yellow', title:'Yellow'};
+      if(h<75)       return {key:'yellow',title:'Yellow'};
       if(h<150)      return {key:'green', title:'Green'};
       if(h<260)      return {key:'black', title:'Black'};
-      return {key:'pale', title:'Pale / Clay'};
+      return {key:'pale',  title:'Pale / Clay'};
     }
+    // Foods recommendations
+    const foods = {
+      brown: {
+        eat:   ["Whole grains","Leafy vegetables","Apples & berries"],
+        avoid: ["Excess fats","Artificial dyes"]
+      },
+      red: {
+        eat:   ["Beet-free meals","Hydrating fluids"],
+        avoid: ["Beetroot","Red food coloring"]
+      },
+      green: {
+        eat:   ["Fiber-rich fruits","Yogurt for gut flora"],
+        avoid: ["Excess spinach","Green dyes"]
+      },
+      yellow: {
+        eat:   ["Lean proteins","Cooked vegetables"],
+        avoid: ["Greasy foods","Heavy dairy"]
+      },
+      black: {
+        eat:   ["Vitamin K foods","Fiber"], 
+        avoid: ["Iron supplements","Charcoal foods"]
+      },
+      pale: {
+        eat:   ["Healthy fats","Bile-boosting foods (eggs)"],
+        avoid: ["Antacids","Fried foods"]
+      }
+    };
 
     fileInput.addEventListener('change', e => {
       const file = e.target.files[0];
       if(!file) return;
-      console.log("📂 File selected:", file.name);
-
-      resultDiv.innerHTML = '';  // clear placeholder
-
+      resultDiv.innerHTML = ''; 
       const img = new Image();
       img.onload = () => {
-        // draw into canvas
-        canvas.width  = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        ctx.drawImage(img, 0, 0);
-
+        canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+        ctx.drawImage(img,0,0);
         // sample center pixel
-        const x = Math.floor(canvas.width / 2);
-        const y = Math.floor(canvas.height / 2);
-        const [r, g, b] = ctx.getImageData(x, y, 1, 1).data;
-        console.log("🎨 Center pixel:", r, g, b);
+        const x = Math.floor(canvas.width/2), y = Math.floor(canvas.height/2);
+        const [r,g,b] = ctx.getImageData(x,y,1,1).data;
+        const hex = rgbToHex(r,g,b), [h,s,l] = rgb2hsl(r,g,b);
+        const cls = classify(h);
+        // compute “closeness” to ideal brown: inverse of Euclidean dist in HSL
+        const dh = (h - idealBrown.h)/360, ds = s-idealBrown.s, dl = l-idealBrown.l;
+        const dist = Math.sqrt(dh*dh + ds*ds + dl*dl);
+        const closeness = Math.max(0, Math.round((1 - dist/0.5)*100)); // normalized ~50° radius
 
-        const hex = rgbToHex(r, g, b);
-        const [h, s, l] = rgb2hsl(r, g, b);
-        const {key, title} = classify(h);
+        // render
+        const blurbPromise = fetch('/blurbs.json').then(r=>r.json());
+        blurbPromise.then(blurbs => {
+          const explanation = blurbs[cls.key] || "";
+          const rec = foods[cls.key];
+          resultDiv.innerHTML = `
+            <div class="swatch" style="background:${hex}"></div>
+            <h3>${cls.title}</h3>
 
-        console.log("🔍 Fetching blurbs.json");
-        fetch('/blurbs.json')
-          .then(res => {
-            console.log("📥 blurbs.json status:", res.status);
-            return res.json();
-          })
-          .then(blurbs => {
-            console.log("📖 blurbs loaded:", blurbs[key]);
-            const blurb = blurbs[key] || 'No explanation available.';
-            resultDiv.innerHTML = `
-              <div class="swatch" style="background:${hex}"></div>
-              <h3>${title}</h3>
-              <p><strong>RGB:</strong> ${r}, ${g}, ${b}</p>
-              <p><strong>HEX:</strong> ${hex}</p>
-              <p><strong>HSL:</strong> ${Math.round(h)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%</p>
-              <p>${blurb}</p>
-            `;
-          })
-          .catch(err => {
-            console.error("❌ Error loading blurbs.json:", err);
-            resultDiv.innerHTML = '<p class="error">Could not load explanations.</p>';
-          });
-      };
-      img.onerror = err => {
-        console.error("❌ Image load error:", err);
-        resultDiv.innerHTML = '<p class="error">Failed to load image.</p>';
+            <div class="metric"><span>Brown closeness:</span>${closeness}%</div>
+            <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
+            <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
+            <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
+
+            <p>${explanation}</p>
+
+            <div class="foods">
+              <div>
+                <h4>Eat</h4>
+                <ul>${rec.eat.map(f=>`<li>${f}</li>`).join("")}</ul>
+              </div>
+              <div>
+                <h4>Avoid</h4>
+                <ul>${rec.avoid.map(f=>`<li>${f}</li>`).join("")}</ul>
+              </div>
+            </div>
+
+            <p class="normal-range">
+              <strong>Normal Brown Range:</strong>
+              Hue 15°–45°, Sat 30%–60%, Lightness 20%–50%
+            </p>
+          `;
+        });
       };
       img.src = URL.createObjectURL(file);
     });
