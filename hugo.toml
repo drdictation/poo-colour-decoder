@@ -1,7 +1,9 @@
 disableKinds = ["taxonomy", "taxonomyTerm"]
-baseURL = "https://yourcustomdomain.com/"
+
+baseURL = "https://poo-color-decoder.netlify.app/"
 languageCode = "en-us"
 title = "Poo Colour Decoder"
+enableRobotsTXT = true
+
 [params]
   paginationPagerSize = 10
-enableRobotsTXT = true
