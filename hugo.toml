@@ -3,5 +3,9 @@ languageCode = "en-us"
 title = "Poo Colour Decoder"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 enableRobotsTXT = false
+
 [params]
   paginationPagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "SITEMAP"]
