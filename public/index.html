@@ -7,25 +7,11 @@
 
   
   <link rel="alternate" type="application/rss+xml"
-        title="Poo Colour Decoder — Daily Poo Facts RSS Feed"
+        title="PoopColor — Daily Poo Facts RSS Feed"
         href="https://poopcolor.info/index.xml" />
 
   <title>Welcome to Poo Colour Decoder – Poo Colour Decoder</title>
   <meta name="description" content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
-  
-  
-
-  <title>Welcome to Poo Colour Decoder – Poo Colour Decoder</title>
-  <meta name="description" content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
-
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
-  </script>
 
   
   <script type="application/ld+json">
@@ -34,7 +20,7 @@
     "@type": "WebApplication",
     "name": "Poo Colour Decoder",
     "description": "Analyse your stool color in seconds. 100% private, fun, educational, and medically informed.",
-    "url": "https://poopcolor.info/",
+    "url": "https:\/\/poopcolor.info\/",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "All",
     "keywords": "stool color, poop color analysis, stool color meaning, gut health"
@@ -81,6 +67,15 @@
   <meta name="twitter:description" content="Analyse your stool colour in seconds. 100% private and educational.">
   <meta name="twitter:image"       content="https://poopcolor.info/poo-decoder-preview.png">
 
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
+  </script>
+
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -98,15 +93,11 @@
     <p>
       Your stool colour can hint at hydration, diet, and gut health.  
       Our <strong>Poo Colour Decoder</strong> runs entirely in your browser—no uploads, 100% private—and instantly classifies your stool shade.
-      Discover what <em>Red, Brown, Green, Yellow, Black</em> or <em>Pale</em> stool might mean.
     </p>
-
-    <p><strong>100% private:</strong> everything runs in your browser, nothing leaves your device.</p>
+    <p><strong>100% private:</strong> nothing leaves your device.</p>
 
     
-    <div class="ad-slot" id="ad-top">
-      
-    </div>
+    <div id="ad-top" class="ad-slot"></div>
 
     
     <div class="decoder">
@@ -118,9 +109,7 @@
     </div>
 
     
-    <div class="ad-slot" id="ad-bottom">
-      
-    </div>
+    <div id="ad-bottom" class="ad-slot"></div>
 
     <hr>
 
@@ -146,95 +135,6 @@
   </div>
 
   
-  <script>
-    console.log("▶ Decoder script loaded");
-
-    const fileInput = document.getElementById('file'),
-          canvas    = document.getElementById('can'),
-          ctx       = canvas.getContext('2d'),
-          resultDiv = document.getElementById('result');
-
-    const idealBrown = { h: 30, s: 0.6, l: 0.35 };
-
-    function rgbToHex(r,g,b) {
-      return "#" + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join('');
-    }
-
-    function rgb2hsl(r,g,b) {
-      r/=255; g/=255; b/=255;
-      const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max-min;
-      let h=0, s=0, l=(max+min)/2;
-      if (d) {
-        s = l>0.5 ? d/(2-max-min) : d/(max+min);
-        switch(max){
-          case r: h=(g-b)/d + (g<b?6:0); break;
-          case g: h=(b-r)/d + 2; break;
-          case b: h=(r-g)/d + 4; break;
-        }
-        h *= 60;
-      }
-      return [h,s,l];
-    }
-
-    function classify(h) {
-      if (h<20||h>340) return { key:'red',   title:'Red / Maroon' };
-      if (h<40)       return { key:'brown', title:'Normal Brown' };
-      if (h<75)       return { key:'yellow',title:'Yellow' };
-      if (h<150)      return { key:'green', title:'Green' };
-      if (h<260)      return { key:'black', title:'Black' };
-      return { key:'pale',  title:'Pale / Clay' };
-    }
-
-    const foods = {
-      brown: { eat:["Whole grains","Leafy vegetables","Apples & berries"], avoid:["Excess fats","Artificial dyes"] },
-      red:   { eat:["Hydrating fluids","Low-pigment foods"],       avoid:["Beetroot","Red food coloring"] },
-      green: { eat:["Fiber-rich fruits","Yogurt"],                avoid:["Excess spinach","Green dyes"] },
-      yellow:{ eat:["Lean proteins","Cooked veggies"],            avoid:["Greasy foods","Heavy dairy"] },
-      black: { eat:["Vitamin K foods","Fiber"],                   avoid:["Iron supplements","Charcoal foods"] },
-      pale:  { eat:["Healthy fats","Bile-boosting foods (eggs)"], avoid:["Antacids","Fried foods"] }
-    };
-
-    fileInput.addEventListener('change', e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      resultDiv.innerHTML = '';
-      const img = new Image();
-      img.onload = () => {
-        canvas.width  = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        ctx.drawImage(img,0,0);
-        const x = Math.floor(canvas.width/2),
-              y = Math.floor(canvas.height/2),
-              [r,g,b] = ctx.getImageData(x,y,1,1).data,
-              hex = rgbToHex(r,g,b),
-              [h,s,l] = rgb2hsl(r,g,b),
-              cls = classify(h),
-              dh = (h-idealBrown.h)/360, ds = s-idealBrown.s, dl = l-idealBrown.l,
-              dist = Math.sqrt(dh*dh+ds*ds+dl*dl),
-              closeness = Math.max(0, Math.round((1-dist/0.5)*100)),
-              rec = foods[cls.key];
-        fetch('/blurbs.json')
-          .then(r => r.json())
-          .then(blurbs => {
-            const blurb = blurbs[cls.key] || '';
-            resultDiv.innerHTML = `
-              <div class="swatch" style="background:${hex}"></div>
-              <h3>${cls.title}</h3>
-              <div class="metric"><span>Brown Closeness:</span>${closeness}%</div>
-              <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
-              <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
-              <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
-              <p>${blurb}</p>
-              <div class="foods">
-                <div><h4>Eat</h4><ul>${rec.eat.map(f=>`<li>${f}</li>`).join('')}</ul></div>
-                <div><h4>Avoid</h4><ul>${rec.avoid.map(f=>`<li>${f}</li>`).join('')}</ul></div>
-              </div>
-              <p class="normal-range"><strong>Normal Brown Range:</strong> Hue 15–45°, Sat 30–60%, Light 20–50%</p>
-            `;
-          });
-      };
-      img.src = URL.createObjectURL(file);
-    });
-  </script>
+  <script src="/js/decoder.js"></script>
 </body>
 </html>
