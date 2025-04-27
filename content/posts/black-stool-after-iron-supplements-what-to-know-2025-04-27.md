@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "Black Stool After Iron Supplements: What to Know"
 date: 2025-04-27T00:00:00Z

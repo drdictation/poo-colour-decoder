@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "Why Is My Stool Green? 7 Common Causes"
 date: 2025-04-27T00:00:00Z
@@ -71,4 +70,3 @@ Timely diagnosis is essential to address any potential underlying health concern
 Curious about your stool color? **Try our free poo colour decoder!** Quickly identify what your stool color might be telling you about your digestive health and when to seek medical advice.
 
 ---
-```
