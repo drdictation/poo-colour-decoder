@@ -97,11 +97,11 @@
       <!-- Paste your AdSense code here -->
     </div>
 
+    <!-- Decoder UI -->
     <div class="decoder">
       <input type="file" id="file" accept="image/*">
       <canvas id="can" style="display:none;"></canvas>
     </div>
-
     <div id="result" class="result">
       <p class="placeholder">Upload a photo to decode its colour…</p>
     </div>
@@ -110,6 +110,18 @@
     <div class="ad-slot" id="ad-bottom">
       <!-- Paste your AdSense code here -->
     </div>
+
+    <hr>
+
+    <!-- Visible FAQ Section -->
+    <h2>Frequently Asked Questions</h2>
+    <dl class="faq">
+      <dt>Is this medical advice?</dt>
+      <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns.</dd>
+
+      <dt>Is my data private?</dt>
+      <dd>Yes—everything runs locally in your browser; we do not collect or store your images or any personal data.</dd>
+    </dl>
 
     <hr>
 
@@ -122,7 +134,7 @@
     </div>
   </div>
 
-  <!-- Decoder logic (unchanged, complete) -->
+  <!-- Decoder logic (inlined unchanged) -->
   <script>
     console.log("▶ Decoder script loaded");
 
@@ -131,7 +143,6 @@
           ctx       = canvas.getContext('2d'),
           resultDiv = document.getElementById('result');
 
-    // Ideal brown for “closeness” metric
     const idealBrown = { h: 30, s: 0.6, l: 0.35 };
 
     function rgbToHex(r,g,b) {
@@ -191,23 +202,25 @@
               dist = Math.sqrt(dh*dh+ds*ds+dl*dl),
               closeness = Math.max(0, Math.round((1-dist/0.5)*100)),
               rec = foods[cls.key];
-        fetch('/blurbs.json').then(r=>r.json()).then(blurbs=>{
-          const blurb = blurbs[cls.key] || '';
-          resultDiv.innerHTML = `
-            <div class="swatch" style="background:${hex}"></div>
-            <h3>${cls.title}</h3>
-            <div class="metric"><span>Brown Closeness:</span>${closeness}%</div>
-            <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
-            <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
-            <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
-            <p>${blurb}</p>
-            <div class="foods">
-              <div><h4>Eat</h4><ul>${rec.eat.map(f=>`<li>${f}</li>`).join('')}</ul></div>
-              <div><h4>Avoid</h4><ul>${rec.avoid.map(f=>`<li>${f}</li>`).join('')}</ul></div>
-            </div>
-            <p class="normal-range"><strong>Normal Brown Range:</strong> Hue 15–45°, Sat 30–60%, Light 20–50%</p>
-          `;
-        });
+        fetch('/blurbs.json')
+          .then(r => r.json())
+          .then(blurbs => {
+            const blurb = blurbs[cls.key] || '';
+            resultDiv.innerHTML = `
+              <div class="swatch" style="background:${hex}"></div>
+              <h3>${cls.title}</h3>
+              <div class="metric"><span>Brown Closeness:</span>${closeness}%</div>
+              <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
+              <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
+              <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
+              <p>${blurb}</p>
+              <div class="foods">
+                <div><h4>Eat</h4><ul>${rec.eat.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+                <div><h4>Avoid</h4><ul>${rec.avoid.map(f=>`<li>${f}</li>`).join('')}</ul></div>
+              </div>
+              <p class="normal-range"><strong>Normal Brown Range:</strong> Hue 15–45°, Sat 30–60%, Light 20–50%</p>
+            `;
+          });
       };
       img.src = URL.createObjectURL(file);
     });
