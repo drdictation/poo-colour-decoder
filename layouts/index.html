@@ -30,6 +30,20 @@
     gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
   </script>
 
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Poo Colour Decoder",
+    "description": "Analyse your stool color in seconds. 100% private, fun, educational, and medically informed.",
+    "url": "https://poopcolor.info/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "keywords": "stool color, poop color analysis, stool color meaning, gut health"
+  }
+  </script>
+
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -82,7 +96,7 @@
     </div>
   </div>
 
-  <!-- Decoder logic (inlined for now) -->
+  <!-- Decoder logic (inlined unchanged) -->
   <script>
     console.log("▶ Decoder script loaded");
 
@@ -114,9 +128,9 @@
     }
 
     function classify(h) {
-      if (h<20||h>340) return { key:'red', title:'Red / Maroon' };
+      if (h<20||h>340) return { key:'red',   title:'Red / Maroon' };
       if (h<40)       return { key:'brown', title:'Normal Brown' };
-      if (h<75)       return { key:'yellow', title:'Yellow' };
+      if (h<75)       return { key:'yellow',title:'Yellow' };
       if (h<150)      return { key:'green', title:'Green' };
       if (h<260)      return { key:'black', title:'Black' };
       return { key:'pale',  title:'Pale / Clay' };
@@ -124,11 +138,11 @@
 
     const foods = {
       brown: { eat:["Whole grains","Leafy vegetables","Apples & berries"], avoid:["Excess fats","Artificial dyes"] },
-      red:   { eat:["Hydrating fluids","Low-pigment foods"],      avoid:["Beetroot","Red food coloring"] },
-      green: { eat:["Fiber-rich fruits","Yogurt"],               avoid:["Excess spinach","Green dyes"] },
-      yellow:{ eat:["Lean proteins","Cooked veggies"],           avoid:["Greasy foods","Heavy dairy"] },
-      black: { eat:["Vitamin K foods","Fiber"],                  avoid:["Iron supplements","Charcoal foods"] },
-      pale:  { eat:["Healthy fats","Bile-boosting foods (eggs)"],avoid:["Antacids","Fried foods"] }
+      red:   { eat:["Hydrating fluids","Low-pigment foods"],       avoid:["Beetroot","Red food coloring"] },
+      green: { eat:["Fiber-rich fruits","Yogurt"],                avoid:["Excess spinach","Green dyes"] },
+      yellow:{ eat:["Lean proteins","Cooked veggies"],            avoid:["Greasy foods","Heavy dairy"] },
+      black: { eat:["Vitamin K foods","Fiber"],                   avoid:["Iron supplements","Charcoal foods"] },
+      pale:  { eat:["Healthy fats","Bile-boosting foods (eggs)"], avoid:["Antacids","Fried foods"] }
     };
 
     fileInput.addEventListener('change', e => {
