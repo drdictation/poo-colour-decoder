@@ -9,11 +9,11 @@
         title="Poo Colour Decoder — Daily Poo Facts RSS Feed"
         href="{{ .Site.BaseURL }}index.xml" />
 
+  <!-- Page Title & Description (duplicated exactly as before) -->
   <title>{{ .Title }} – {{ .Site.Title }}</title>
   <meta name="description" content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
   
-  <!-- (then your OpenGraph/Twitter meta, gtag, CSS etc...) -->
-
+  <!-- Duplicate Title / Description block retained (was in original) -->
   <title>{{ .Title }} – {{ .Site.Title }}</title>
   <meta name="description" content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
 
@@ -81,6 +81,15 @@
   <meta name="twitter:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
   <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Inline styles for gauge & badge -->
+  <style>
+    .badge{display:inline-block;padding:.2rem .6rem;border-radius:4px;font-size:.9rem;font-weight:700;color:#fff}
+    .badge-ok{background:#3ca540}
+    .badge-warn{background:#e38a19}
+    .gauge{width:100%;height:10px;background:#ddd;border-radius:5px;margin:.4rem 0}
+    .gauge-fill{height:10px;border-radius:5px;background:#3ca540;width:0%}
+  </style>
 </head>
 <body>
   <div class="container">
@@ -92,49 +101,36 @@
 
     <h1>{{ .Title }}</h1>
 
-    <!-- SEO-Rich Intro -->
+    <!-- SEO Intro -->
     <h2>Why Check Your Poo Colour?</h2>
-    <p>
-      Your stool colour can hint at hydration, diet, and gut health.  
-      Our <strong>Poo Colour Decoder</strong> runs entirely in your browser—no uploads, 100% private—and instantly classifies your stool shade.
-      Discover what <em>Red, Brown, Green, Yellow, Black</em> or <em>Pale</em> stool might mean.
-    </p>
+    <p>Your stool colour can hint at hydration, diet, and gut health.
+       Our <strong>Poo Colour Decoder</strong> runs entirely in your browser—no uploads, 100% private—and instantly classifies your stool shade.</p>
 
-    <p><strong>100% private:</strong> everything runs in your browser, nothing leaves your device.</p>
+    <p><strong>100% private:</strong> nothing leaves your device.</p>
 
     <!-- Ad slot top -->
-    <div class="ad-slot" id="ad-top">
-      <!-- Paste your AdSense code here -->
-    </div>
+    <div id="ad-top" class="ad-slot"></div>
 
     <!-- Decoder UI -->
     <div class="decoder">
       <input type="file" id="file" accept="image/*">
       <canvas id="can" style="display:none;"></canvas>
     </div>
-    <div id="result" class="result">
-      <p class="placeholder">Upload a photo to decode its colour…</p>
-    </div>
+    <div id="result" class="result"><p class="placeholder">Upload a photo to decode its colour…</p></div>
 
     <!-- Ad slot bottom -->
-    <div class="ad-slot" id="ad-bottom">
-      <!-- Paste your AdSense code here -->
-    </div>
+    <div id="ad-bottom" class="ad-slot"></div>
 
     <hr>
-
-    <!-- Visible FAQ Section -->
     <h2>Frequently Asked Questions</h2>
     <dl class="faq">
       <dt>Is this medical advice?</dt>
       <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns.</dd>
-
       <dt>Is my data private?</dt>
       <dd>Yes—everything runs locally in your browser; we do not collect or store your images or any personal data.</dd>
     </dl>
 
     <hr>
-
     <h2>Daily Poo Facts</h2>
     <p><a href="/posts/">Browse the archive →</a></p>
 
@@ -144,96 +140,93 @@
     </div>
   </div>
 
-  <!-- Decoder logic (inlined unchanged) -->
-  <script>
-    console.log("▶ Decoder script loaded");
+<!-- -------------- Enhanced Decoder Script -------------- -->
+<script>
+console.log("▶ Decoder script v2 loaded");
 
-    const fileInput = document.getElementById('file'),
-          canvas    = document.getElementById('can'),
-          ctx       = canvas.getContext('2d'),
-          resultDiv = document.getElementById('result');
+const fileInput=document.getElementById('file'),
+      canvas   =document.getElementById('can'),
+      ctx      =canvas.getContext('2d'),
+      resultDiv=document.getElementById('result');
 
-    const idealBrown = { h: 30, s: 0.6, l: 0.35 };
+const idealBrown={h:30,s:0.6,l:0.35};
+const range={hMin:15,hMax:45,sMin:0.30,sMax:0.60,lMin:0.20,lMax:0.50};
+const weirdLines=[
+  "Hmm… that hue looks suspiciously non-poop! 😅",
+  "Either your diet is cosmic, or that’s not stool at all!",
+  "Purple poo? Picasso would approve 🎨"
+];
 
-    function rgbToHex(r,g,b) {
-      return "#" + [r,g,b].map(x => x.toString(16).padStart(2,'0')).join('');
+function rgbToHex(r,g,b){return"#"+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');}
+function rgb2hsl(r,g,b){
+  r/=255;g/=255;b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
+  let h=0,s=0,l=(max+min)/2;
+  if(d){
+    s=l>0.5?d/(2-max-min):d/(max+min);
+    switch(max){
+      case r:h=(g-b)/d+(g<b?6:0);break;
+      case g:h=(b-r)/d+2;break;
+      case b:h=(r-g)/d+4;break;
     }
+    h*=60;
+  }
+  return[h,s,l];
+}
+function classify(h){
+  if(h<20||h>340) return{key:'red', title:'Red / Maroon'};
+  if(h<40)        return{key:'brown',title:'Normal Brown'};
+  if(h<75)        return{key:'yellow',title:'Yellow'};
+  if(h<150)       return{key:'green', title:'Green'};
+  if(h<260)       return{key:'black', title:'Black'};
+  return{key:'pale', title:'Pale / Clay'};
+}
+function inNormal(h,s,l){
+  return h>=range.hMin&&h<=range.hMax&&
+         s>=range.sMin&&s<=range.sMax&&
+         l>=range.lMin&&l<=range.lMax;
+}
 
-    function rgb2hsl(r,g,b) {
-      r/=255; g/=255; b/=255;
-      const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max-min;
-      let h=0, s=0, l=(max+min)/2;
-      if (d) {
-        s = l>0.5 ? d/(2-max-min) : d/(max+min);
-        switch(max){
-          case r: h=(g-b)/d + (g<b?6:0); break;
-          case g: h=(b-r)/d + 2; break;
-          case b: h=(r-g)/d + 4; break;
-        }
-        h *= 60;
-      }
-      return [h,s,l];
+fileInput.addEventListener('change',e=>{
+  const file=e.target.files[0];
+  if(!file) return;
+  resultDiv.innerHTML='';
+  const img=new Image();
+  img.onload=()=>{
+    canvas.width=img.naturalWidth; canvas.height=img.naturalHeight;
+    ctx.drawImage(img,0,0);
+    const [r,g,b]=ctx.getImageData(canvas.width/2,canvas.height/2,1,1).data,
+          hex=rgbToHex(r,g,b),
+          [h,s,l]=rgb2hsl(r,g,b),
+          cls=classify(h);
+    const dh=(h-idealBrown.h)/360, ds=s-idealBrown.s, dl=l-idealBrown.l,
+          closeness=Math.max(0,(1-Math.sqrt(dh*dh+ds*ds+dl*dl)/0.5)*100).toFixed(2),
+          gaugeWidth=Math.max(0,Math.min(100,closeness)),
+          badge=inNormal(h,s,l)
+                ?'<span class="badge badge-ok">✅ NORMAL</span>'
+                :'<span class="badge badge-warn">⚠️ UNUSUAL</span>';
+    let fun='';
+    if(!['red','brown','yellow','green','black','pale'].includes(cls.key)){
+      fun=weirdLines[Math.floor(Math.random()*weirdLines.length)];
     }
-
-    function classify(h) {
-      if (h<20||h>340) return { key:'red',   title:'Red / Maroon' };
-      if (h<40)       return { key:'brown', title:'Normal Brown' };
-      if (h<75)       return { key:'yellow',title:'Yellow' };
-      if (h<150)      return { key:'green', title:'Green' };
-      if (h<260)      return { key:'black', title:'Black' };
-      return { key:'pale',  title:'Pale / Clay' };
-    }
-
-    const foods = {
-      brown: { eat:["Whole grains","Leafy vegetables","Apples & berries"], avoid:["Excess fats","Artificial dyes"] },
-      red:   { eat:["Hydrating fluids","Low-pigment foods"],       avoid:["Beetroot","Red food coloring"] },
-      green: { eat:["Fiber-rich fruits","Yogurt"],                avoid:["Excess spinach","Green dyes"] },
-      yellow:{ eat:["Lean proteins","Cooked veggies"],            avoid:["Greasy foods","Heavy dairy"] },
-      black: { eat:["Vitamin K foods","Fiber"],                   avoid:["Iron supplements","Charcoal foods"] },
-      pale:  { eat:["Healthy fats","Bile-boosting foods (eggs)"], avoid:["Antacids","Fried foods"] }
-    };
-
-    fileInput.addEventListener('change', e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      resultDiv.innerHTML = '';
-      const img = new Image();
-      img.onload = () => {
-        canvas.width  = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        ctx.drawImage(img,0,0);
-        const x = Math.floor(canvas.width/2),
-              y = Math.floor(canvas.height/2),
-              [r,g,b] = ctx.getImageData(x,y,1,1).data,
-              hex = rgbToHex(r,g,b),
-              [h,s,l] = rgb2hsl(r,g,b),
-              cls = classify(h),
-              dh = (h-idealBrown.h)/360, ds = s-idealBrown.s, dl = l-idealBrown.l,
-              dist = Math.sqrt(dh*dh+ds*ds+dl*dl),
-              closeness = Math.max(0, Math.round((1-dist/0.5)*100)),
-              rec = foods[cls.key];
-        fetch('/blurbs.json')
-          .then(r => r.json())
-          .then(blurbs => {
-            const blurb = blurbs[cls.key] || '';
-            resultDiv.innerHTML = `
-              <div class="swatch" style="background:${hex}"></div>
-              <h3>${cls.title}</h3>
-              <div class="metric"><span>Brown Closeness:</span>${closeness}%</div>
-              <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
-              <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
-              <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
-              <p>${blurb}</p>
-              <div class="foods">
-                <div><h4>Eat</h4><ul>${rec.eat.map(f=>`<li>${f}</li>`).join('')}</ul></div>
-                <div><h4>Avoid</h4><ul>${rec.avoid.map(f=>`<li>${f}</li>`).join('')}</ul></div>
-              </div>
-              <p class="normal-range"><strong>Normal Brown Range:</strong> Hue 15–45°, Sat 30–60%, Light 20–50%</p>
-            `;
-          });
-      };
-      img.src = URL.createObjectURL(file);
+    fetch('/blurbs.json').then(r=>r.json()).then(blurbs=>{
+      const blurb=blurbs[cls.key]||'';
+      resultDiv.innerHTML=`
+        <div class="swatch" style="background:${hex}"></div>
+        <h3>${cls.title} ${badge}</h3>
+        <div class="metric"><span>Brown Closeness:</span>${closeness}%</div>
+        <div class="gauge"><div class="gauge-fill" style="width:${gaugeWidth}%"></div></div>
+        <div class="metric"><span>Hue:</span>${Math.round(h)}°</div>
+        <div class="metric"><span>Saturation:</span>${Math.round(s*100)}%</div>
+        <div class="metric"><span>Lightness:</span>${Math.round(l*100)}%</div>
+        <p>${blurb}</p>
+        ${fun?`<p><strong>${fun}</strong></p>`:''}
+        <p class="normal-range"><strong>Typical Brown Corridor:</strong> Hue 15–45°, Sat 30–60 %, Light 20–50 %</p>
+      `;
     });
-  </script>
+  };
+  img.src=URL.createObjectURL(file);
+});
+</script>
 </body>
 </html>
