@@ -2,17 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>{{ .Title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{- $pagetitle := printf "%s – %s" .Title .Site.Title -}}
+  <title>{{ $pagetitle }}</title>
+
+  <!-- Meta Description -->
+  {{ with .Params.summary }}
+  <meta name="description" content="{{ . }}">
+  {{ end }}
+
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  <!-- BlogPosting JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ .Title }}",
+    "author": { "@type": "Person", "name": "Dr Chamara Basnayake" },
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "description": "{{ .Params.summary }}",
+    "mainEntityOfPage": "{{ .Permalink }}"
+  }
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         content="{{ .Permalink }}" />
+  <meta property="og:title"       content="{{ $pagetitle }}" />
+  <meta property="og:description" content="{{ .Params.summary }}" />
+  {{ with .Params.featured_image }}
+    <meta property="og:image"     content="{{ .Site.BaseURL }}{{ . }}" />
+  {{ end }}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content="{{ .Permalink }}" />
+  <meta name="twitter:title"       content="{{ $pagetitle }}" />
+  <meta name="twitter:description" content="{{ .Params.summary }}" />
+  {{ with .Params.featured_image }}
+    <meta name="twitter:image"     content="{{ .Site.BaseURL }}{{ . }}" />
+  {{ end }}
+
   <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
   <div class="container">
-    <h1>{{ .Title }}</h1>
-    <p class="archive-date">{{ .Date.Format "Jan 2, 2006" }}</p>
-    {{ .Content }}
-    <p><em>*. Not medical advice.</em></p>
-    <p><a href="/posts/">← Back to archive</a></p>
+    <article class="post">
+      <header>
+        <h1>{{ .Title }}</h1>
+        <div class="post-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          • {{ .ReadingTime }} min read
+        </div>
+      </header>
+
+      <!-- Table of Contents -->
+      {{ if .TableOfContents }}
+      <nav class="toc">
+        <h2>On This Page</h2>
+        {{ .TableOfContents }}
+      </nav>
+      {{ end }}
+
+      <!-- Post Content -->
+      <section class="post-content">
+        {{ .Content }}
+      </section>
+
+      <!-- Related Posts -->
+      <section class="related-posts">
+        <h2>Related Posts</h2>
+        <ul>
+          {{ $all := where .Site.RegularPages "Type" "posts" }}
+          {{ range first 3 (where $all "Permalink" "ne" .Permalink) }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ul>
+      </section>
+
+      <!-- Prev / Next navigation -->
+      <nav class="post-nav">
+        {{ with .Prev }}<a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+        {{ with .Next }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+      </nav>
+
+      <!-- Medical Disclaimer -->
+      <footer class="post-footer">
+        <p><em>Not medical advice. Consult a qualified professional with any health concerns.</em></p>
+        <p><a href="/posts/">← Back to archive</a></p>
+      </footer>
+    </article>
   </div>
 </body>
 </html>
