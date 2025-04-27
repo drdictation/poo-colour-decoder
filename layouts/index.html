@@ -7,6 +7,55 @@
   <title>{{ .Title }} – {{ .Site.Title }}</title>
   <meta name="description" content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
+  </script>
+
+  <!-- WebApplication Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Poo Colour Decoder",
+    "description": "Analyse your stool color in seconds. 100% private, fun, educational, and medically informed.",
+    "url": "https://poopcolor.info/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "keywords": "stool color, poop color analysis, stool color meaning, gut health"
+  }
+  </script>
+
+  <!-- FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this medical advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes—everything runs locally in your browser; we do not collect or store your images or any personal data."
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="{{ .Permalink }}">
@@ -20,29 +69,6 @@
   <meta name="twitter:title"       content="{{ .Title }} – {{ .Site.Title }}">
   <meta name="twitter:description" content="Analyse your stool colour in seconds. 100% private and educational.">
   <meta name="twitter:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
-  </script>
-
-  <!-- Structured Data (Schema.org JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Poo Colour Decoder",
-    "description": "Analyse your stool color in seconds. 100% private, fun, educational, and medically informed.",
-    "url": "https://poopcolor.info/",
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "All",
-    "keywords": "stool color, poop color analysis, stool color meaning, gut health"
-  }
-  </script>
 
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -60,11 +86,11 @@
     <h2>Why Check Your Poo Colour?</h2>
     <p>
       Your stool colour can hint at hydration, diet, and gut health.  
-      Our <strong>Poo Colour Decoder</strong> runs entirely in your browser—no uploads, 100 % private—and instantly classifies your stool shade.
+      Our <strong>Poo Colour Decoder</strong> runs entirely in your browser—no uploads, 100% private—and instantly classifies your stool shade.
       Discover what <em>Red, Brown, Green, Yellow, Black</em> or <em>Pale</em> stool might mean.
     </p>
 
-    <p><strong>100 % private:</strong> everything runs in your browser, nothing leaves your device.</p>
+    <p><strong>100% private:</strong> everything runs in your browser, nothing leaves your device.</p>
 
     <!-- Ad slot top -->
     <div class="ad-slot" id="ad-top">
@@ -96,7 +122,7 @@
     </div>
   </div>
 
-  <!-- Decoder logic (inlined unchanged) -->
+  <!-- Decoder logic (unchanged, complete) -->
   <script>
     console.log("▶ Decoder script loaded");
 
@@ -105,6 +131,7 @@
           ctx       = canvas.getContext('2d'),
           resultDiv = document.getElementById('result');
 
+    // Ideal brown for “closeness” metric
     const idealBrown = { h: 30, s: 0.6, l: 0.35 };
 
     function rgbToHex(r,g,b) {
@@ -165,7 +192,7 @@
               closeness = Math.max(0, Math.round((1-dist/0.5)*100)),
               rec = foods[cls.key];
         fetch('/blurbs.json').then(r=>r.json()).then(blurbs=>{
-          const blurb = blurbs[cls.key]||'';
+          const blurb = blurbs[cls.key] || '';
           resultDiv.innerHTML = `
             <div class="swatch" style="background:${hex}"></div>
             <h3>${cls.title}</h3>
