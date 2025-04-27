@@ -49,7 +49,7 @@ draft: false
 
 {tip}
 
-*AI-generated. Not medical advice.*
+**. Not medical advice.*
 """))
 
 print("Created", path)
