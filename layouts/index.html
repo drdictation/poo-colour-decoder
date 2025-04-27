@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+
   <title>{{ .Title }}</title>
+  <meta name="description" content="Analyse your stool color in seconds. 100% private. Fun, educational, and medically informed.">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
+  </script>
+
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -84,7 +96,7 @@
       if(h<75)       return { key:'yellow', title:'Yellow' };
       if(h<150)      return { key:'green', title:'Green' };
       if(h<260)      return { key:'black', title:'Black' };
-      return { key:'pale', title:'Pale / Clay' };
+      return { key:'pale',  title:'Pale / Clay' };
     }
 
     // Eat/Avoid recommendations
@@ -146,7 +158,7 @@
           .then(res => res.json())
           .then(blurbs => {
             const blurb = blurbs[cls.key] || '';
-            const rec = foods[cls.key];
+            const rec   = foods[cls.key];
 
             resultDiv.innerHTML = `
               <div class="swatch" style="background:${hex}"></div>
