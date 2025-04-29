@@ -1,8 +1,45 @@
 {
-    "brown":  "Brown is the normal colour and shows bile pigment is doing its job.",
-    "green":  "Green stool is usually from leafy veggies or faster gut transit.",
-    "yellow": "Yellow can mean extra fat or malabsorption after greasy meals.",
-    "red":    "Red may be beetroot… or fresh blood. Seek help if uncertain.",
-    "black":  "Black could be iron tablets or digested blood – check your meds.",
-    "pale":   "Clay-coloured stool suggests little bile; see a doctor if persistent."
+  "red": [
+    "Bright red often points to beetroot, dragon-fruit, or tomato soup—but double-check it isn’t blood.",
+    "Red patches can come from food dyes (think red velvet cake). If you haven’t eaten any, speak with a clinician.",
+    "Spotty red + loose stool after hot sauce? Capsaicin can speed things up and tint your stool.",
+    "Persistent red without red-food intake can mean bleeding lower down—time to book a check-up."
+  ],
+  "brown": [
+    "Textbook brown! Fibre, hydration and bile flow look balanced. 👌",
+    "Classic chocolate-brown signals healthy digestion—nice job, gut-flora!",
+    "This perfect brown suggests you’re nailing the veggies-plus-water combo.",
+    "Balanced brown today—keep it up with whole grains and 2 L of water."
+  ],
+  "yellow": [
+    "Yellow can follow greasy meals—your gut’s way of saying ‘lay off the fried stuff!’",
+    "Rapid transit (diarrhoea) keeps bile bright-yellow. Slow down with oats and bananas.",
+    "High dairy & low fibre? That combo often makes stool yellowish.",
+    "Try lean proteins and cooked veggies to mellow the yellow."
+  ],
+  "green": [
+    "Lots of leafy greens or green smoothies turn stool emerald—totally normal.",
+    "Bile can stay green if food moves fast. A probiotic yogurt may help.",
+    "Iron supplements sometimes tint stool dark-green.",
+    "Reduce artificial green dyes if the Hulk-hue sticks around."
+  ],
+  "black": [
+    "Iron or activated-charcoal tablets darken stool dramatically.",
+    "Black liquorice or blueberries can give an inky colour—delicious but deceptive!",
+    "Tarry black without supplements? That can suggest old blood—get checked ASAP."
+  ],
+  "pale": [
+    "Clay-coloured stool may point to low bile—watch fatty food intake.",
+    "Very pale stool after antacids is common; if persistent, see a doctor.",
+    "Obstruction of bile ducts can bleach stool—consult a healthcare provider."
+  ],
+
+  "foods": {
+    "red"   : { "eat": ["Hydrating fluids","Gentle fibre"],           "avoid": ["Beetroot","Red food dye","Hot sauce"] },
+    "brown" : { "eat": ["Whole grains","Leafy veg","Berries"],        "avoid": ["Excess fats","Artificial dyes"] },
+    "yellow": { "eat": ["Lean protein","Cooked veg"],                 "avoid": ["Greasy foods","Heavy dairy"] },
+    "green" : { "eat": ["Probiotic yogurt","Balanced fibre"],         "avoid": ["Excess spinach","Green dyes"] },
+    "black" : { "eat": ["Vitamin K foods","Extra fibre"],             "avoid": ["Iron tablets","Charcoal foods"] },
+    "pale"  : { "eat": ["Healthy fats","Eggs"],                       "avoid": ["Antacids over-use","Fried foods"] }
   }
+}
