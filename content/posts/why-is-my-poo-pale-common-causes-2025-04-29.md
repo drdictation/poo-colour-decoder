@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "Why Is My Poo Pale - common causes"
 date: 2025-04-29T00:00:00Z
