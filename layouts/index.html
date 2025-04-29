@@ -10,14 +10,15 @@
         href="{{ .Site.BaseURL }}index.xml" />
 
   <title>{{ .Title }} – {{ .Site.Title }}</title>
-  <meta name="description" content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
+  <meta name="description"
+        content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
 
   <!-- WebApplication Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Poo Colour Decoder",
+    "name": "PoopColour Decoder",
     "description": "Analyse your stool color in seconds. 100% private, fun, educational, and medically informed.",
     "url": "{{ .Site.BaseURL }}",
     "applicationCategory": "HealthApplication",
@@ -102,6 +103,7 @@
     <div class="decoder">
       <input type="file" id="file" accept="image/*">
       <canvas id="can" style="display:none;"></canvas>
+      <button id="shareBtn" style="display:none;">Share score</button>
     </div>
     <div id="result" class="result">
       <p class="placeholder">Upload a photo to decode its colour…</p>
@@ -112,20 +114,36 @@
 
     <hr>
 
+    <!-- Popular Topics for SEO -->
+    <h2>Popular Poo Colour Topics</h2>
+    {{ $recent := first 5 (where .Site.RegularPages "Section" "posts") }}
+    {{ if gt (len $recent) 0 }}
+      <ul class="popular-topics">
+        {{ range sort $recent "Date" "desc" }}
+          <li>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    <hr>
+
     <!-- Visible FAQ Section -->
     <h2>Frequently Asked Questions</h2>
     <dl class="faq">
       <dt>Is this medical advice?</dt>
-      <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns.</dd>
+      <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional.</dd>
 
       <dt>Is my data private?</dt>
-      <dd>Yes—everything runs locally in your browser; we do not collect or store your images or any personal data.</dd>
+      <dd>Yes—everything runs locally in your browser; we do not collect or store your images or data.</dd>
     </dl>
 
     <hr>
 
-    <h2>Daily Poo Facts</h2>
-    <p><a href="/posts/">Browse the archive →</a></p>
+    <h2>Daily Poo Facts Archive</h2>
+    <p><a href="/posts/">Browse all topics →</a></p>
 
     <!-- Medical disclaimer -->
     <div class="disclaimer-medical">
