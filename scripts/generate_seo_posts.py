@@ -23,9 +23,8 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # 2) Target topics
 TOPICS = [
-    "Blood in Stool vs Red Foods: How to Tell",
-    "Black Stool After Iron Supplements: What to Know",
-    "Why Is My Stool Green? 7 Common Causes"
+    
+    "What happens to the colour of my poo when I take antibiotics"
 ]
 
 # 3) Helper to build a slug and filename
