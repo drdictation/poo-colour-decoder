@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "Blood in Stool vs Red Foods: How to Tell"
 date: 2025-04-27T00:00:00Z
