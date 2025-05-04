@@ -57,5 +57,5 @@ While poo colour changes during antibiotic use are often harmless, there are tim
 
 ## Try It Yourself
 
-Curious about your poo colour and what it might mean? **Try our free poo colour decoder!** It’s an easy tool designed to help you understand stool colour changes during antibiotics and beyond. Stay informed and maintain your digestive wellness today.
+Curious about your poo colour and what it might mean? [**Try our free poo colour decoder!**](www.poopcolor.info) It’s an easy tool designed to help you understand stool colour changes during antibiotics and beyond. Stay informed and maintain your digestive wellness today.
 
