@@ -7,3 +7,5 @@ draft: false
 Beetroot contains betalains—vibrant pigments that pass through the gut.  
 Eating beetroot can cause pink or red stools, a harmless and temporary effect.
 
+[**Try our free poo colour decoder!**](https://www.poopcolor.info)
+

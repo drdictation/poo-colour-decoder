@@ -7,4 +7,6 @@ draft: false
 Iron tablets can darken the stool colour significantly, turning it black or dark green.  
 This change is common and reflects unabsorbed iron passing through the intestines.
 
+[**Try our free poo colour decoder!**](https://www.poopcolor.info)
+
 **. Not medical advice.*

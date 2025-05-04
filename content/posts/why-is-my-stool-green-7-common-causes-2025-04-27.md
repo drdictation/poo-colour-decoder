@@ -9,6 +9,8 @@ summary: "Discover 7 common causes of green stool, symptoms to watch for, and wh
 
 **TL;DR**: Green stool is usually harmless and can result from diet or mild digestive changes. However, persistent or severe symptoms warrant medical evaluation to rule out infections or underlying health issues.
 
+[**Try our free poo colour decoder!**](https://www.poopcolor.info)
+
 ## Overview
 
 Wondering **why is my stool green**? Green stool can be surprising and sometimes concerning, but it’s often caused by common, non-serious factors. Your stool color reflects how quickly food moves through your digestive tract and what you consume. In this post, we’ll explore 7 common causes of green stool and help you understand when to seek medical advice.
@@ -67,6 +69,6 @@ Timely diagnosis is essential to address any potential underlying health concern
 
 ## Try It Yourself
 
-Curious about your stool color? **Try our free poo colour decoder!** Quickly identify what your stool color might be telling you about your digestive health and when to seek medical advice.
+Curious about your stool color? [**Try our free poo colour decoder!**](https://www.poopcolor.info) Quickly identify what your stool color might be telling you about your digestive health and when to seek medical advice.
 
 ---

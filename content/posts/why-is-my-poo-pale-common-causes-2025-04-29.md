@@ -62,5 +62,5 @@ These signs may indicate underlying liver, gallbladder, or pancreatic disease th
 
 ## Try It Yourself
 
-Curious about the meaning behind your poo colour? **Try our free poo colour decoder!** Decode your stool colour and get personalized insights to help you understand your digestive health better. [Start decoding now!](#)
+Curious about the meaning behind your poo colour? [**Try our free poo colour decoder!**](https://www.poopcolor.info) Decode your stool colour and get personalized insights to help you understand your digestive health better. [Start decoding now!](#)
 ```

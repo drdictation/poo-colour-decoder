@@ -11,7 +11,7 @@ summary: "Discover why black stool occurs after iron supplements, its causes, wh
 
 ## Overview
 
-Black stool after iron supplements is a frequent concern for many taking these medications to treat or prevent iron deficiency. Iron supplements, especially ferrous sulfate, are known to darken stool color, leading to black or very dark bowel movements. Understanding why this happens and when it is a cause for concern can help you better manage your health while taking iron.
+Black stool after iron supplements is a frequent concern for many taking these medications to treat or prevent iron deficiency. Iron supplements, especially ferrous sulfate, are known to [darken stool color](https://medlineplus.gov/ency/article/007478.htm), leading to black or very dark bowel movements. Understanding why this happens and when it is a cause for concern can help you better manage your health while taking iron.
 
 ## Key Causes of Black Stool After Iron Supplements
 
@@ -50,7 +50,7 @@ If you notice any of these signs, it is important to reach out to a healthcare p
 
 ## Try It Yourself
 
-Curious about what your stool color means? **Try our free poo colour decoder!** It’s a simple, fun way to learn more about your digestive health and when you should see a doctor.
+Curious about what your stool color means? [**Try our free poo colour decoder!**](https://www.poopcolor.info)It’s a simple, fun way to learn more about your digestive health and when you should see a doctor.
 
 ---
 

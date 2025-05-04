@@ -71,7 +71,7 @@ Even if you suspect food-related discoloration, persistent red stool lasting mor
 
 ## Try It Yourself
 
-Confused about what’s causing your stool discoloration? **Try our free poo colour decoder!** Easily enter details about your stool color and other symptoms to get personalized insights and advice.
+Confused about what’s causing your stool discoloration? [**Try our free poo colour decoder!**](https://www.poopcolor.info) Easily enter details about your stool color and other symptoms to get personalized insights and advice.
 
 ---
 

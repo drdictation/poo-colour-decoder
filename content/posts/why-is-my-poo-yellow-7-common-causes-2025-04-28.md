@@ -9,6 +9,8 @@ summary: "Discover 7 common causes of yellow poo, including diet, digestion issu
 
 **TL;DR**: Yellow poo can be caused by a variety of factors such as diet, malabsorption, infections, and liver or gallbladder issues. Most causes are harmless but persistent changes should not be ignored.
 
+[**Try our free poo colour decoder!**](https://www.poopcolor.info)
+
 ## Overview
 
 If you’ve noticed a change in your bowel movements and are wondering **why is my poo yellow**, you’re not alone. Changes in stool color can be influenced by many everyday factors, including what you eat, how your digestive system functions, and even infections. Understanding the common causes of yellow poo can help you assess whether your bowel health needs a medical check.
@@ -58,7 +60,7 @@ Early diagnosis is important to rule out serious conditions such as liver diseas
 
 ## Try It Yourself
 
-Curious about your poo color? **Try our free poo colour decoder!** It’s a simple tool designed to help you understand what your bowel movements might be telling you about your health. Click [here](#) to get started!
+Curious about your poo color? [**Try our free poo colour decoder!**](https://www.poopcolor.info) It’s a simple tool designed to help you understand what your bowel movements might be telling you about your health. Click [here](#) to get started!
 
 ---
 
