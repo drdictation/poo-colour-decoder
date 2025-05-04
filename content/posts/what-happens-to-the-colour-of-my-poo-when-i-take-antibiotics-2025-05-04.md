@@ -1,6 +1,6 @@
 ---
 title: "What happens to the colour of my poo when I take antibiotics"
-date: 2025-05-04T00:00:00Z
+date: 2025-05-03T00:00:00Z
 draft: false
 summary: "Discover how antibiotics affect your poop color, reasons for changes, and when to consult a doctor for safe digestive health awareness."
 ---
