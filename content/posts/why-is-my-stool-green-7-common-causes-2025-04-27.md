@@ -19,31 +19,31 @@ Wondering **why is my stool green**? Green stool can be surprising and sometimes
 
 ### 1. Rapid Transit Through the Intestines
 
-When stool passes too quickly through the intestines, bile—the greenish fluid that aids digestion—doesn’t have enough time to break down completely, resulting in green stool. This often happens with diarrhea or gastrointestinal upset.
+When stool passes too quickly through the intestines, bile—the greenish fluid that aids digestion—doesn’t have enough time to break down completely, resulting in green stool. This often happens with diarrhea or gastrointestinal upset. ([Mayo Clinic](https://www.mayoclinic.org/stool-color/expert-answers/faq-20058080))
 
 ### 2. Diet Rich in Green Vegetables
 
-Eating large amounts of green leafy vegetables like spinach, kale, or broccoli can tint your stool green due to the natural chlorophyll content.
+Eating large amounts of green leafy vegetables like spinach, kale, or broccoli can tint your stool green due to the natural chlorophyll content. ([Healthline](https://www.healthline.com/health/digestive-health/why-is-my-poop-green))
 
 ### 3. Artificial Food Colorings
 
-Certain foods and drinks, including candies, ice creams, or drinks with green, blue, or purple dyes, may cause green stool. Pay attention to recent dietary changes if you notice this color shift.
+Certain foods and drinks, including candies, ice creams, or drinks with green, blue, or purple dyes, may cause green stool. Pay attention to recent dietary changes if you notice this color shift. ([Cleveland Clinic](https://health.clevelandclinic.org/green-poop))
 
 ### 4. Iron Supplements
 
-Taking iron supplements or multivitamins with iron can sometimes cause greenish or dark stools as a side effect. Consult your healthcare provider if you’re unsure.
+Taking iron supplements or multivitamins with iron can sometimes cause greenish or dark stools as a side effect. Consult your healthcare provider if you’re unsure. ([WebMD](https://www.webmd.com/digestive-disorders/black-tarry-stool-reasons))
 
 ### 5. Antibiotics and Medications
 
-Some antibiotics and medications alter gut bacteria and digestion speed, potentially leading to green stool. Always read medication side effects and inform your doctor about any new symptoms.
+Some antibiotics and medications alter gut bacteria and digestion speed, potentially leading to green stool. Always read medication side effects and inform your doctor about any new symptoms. ([MedlinePlus](https://medlineplus.gov/ency/article/000293.htm))
 
 ### 6. Infections
 
-Certain bacterial infections (like Salmonella or Giardia) speed up intestinal transit or disrupt the gut environment, causing green diarrhea. If accompanied by fever or abdominal pain, seek medical care.
+Certain bacterial infections (like Salmonella or Giardia) speed up intestinal transit or disrupt the gut environment, causing green diarrhea. If accompanied by fever or abdominal pain, seek medical care. ([Healthline](https://www.healthline.com/health/digestive-health/why-is-my-poop-green))
 
 ### 7. Medical Conditions
 
-Less commonly, green stool may signal conditions such as Crohn’s disease, irritable bowel syndrome (IBS), or bile acid malabsorption. Persistent changes in stool color, frequency, or consistency should prompt evaluation.
+Less commonly, green stool may signal conditions such as [Crohn’s disease](https://www.webmd.com/ibd-crohns-disease/crohns-disease) or [irritable bowel syndrome (IBS)](https://www.webmd.com/ibs/guide/irritable-bowel-syndrome-ibs). Persistent changes in stool color, frequency, or consistency should prompt evaluation. ([Cleveland Clinic](https://my.clevelandclinic.org/health/articles/stool-poop-color))
 
 ## When to Seek Help
 
@@ -55,13 +55,12 @@ If you experience green stool along with any of these warning signs, consult a h
 - Blood or mucus in your stool  
 - Unexplained weight loss or fatigue  
 
-Timely diagnosis is essential to address any potential underlying health concerns.
+Timely diagnosis is essential to address any potential underlying health concerns. ([MedlinePlus](https://medlineplus.gov/diarrhea.html))
 
 ## Related Posts
+
 - [Blood in Stool vs Red Foods: How to Tell](/posts/blood-in-stool-vs-red-foods-how-to-tell)
 - [Black Stool After Iron Supplements: What to Know](/posts/black-stool-after-iron-supplements-what-to-know)
-
-
 - [What Does Black Stool Mean? Causes and Concerns](#)  
 - [How to Improve Your Digestive Health Naturally](#)  
 - [Diarrhea Causes and When to Worry](#)  
