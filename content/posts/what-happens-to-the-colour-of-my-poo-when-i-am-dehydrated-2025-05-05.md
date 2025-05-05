@@ -1,6 +1,6 @@
 ---
 title: "What happens to the colour of my poo when I am dehydrated"
-date: 2025-05-05T00:00:00Z
+date: 2025-05-04T00:00:00Z
 draft: false
 summary: "Discover how dehydration affects stool color, causes darker shades, and learn hydration tips to maintain healthy bowel movements and digestion"
 ---

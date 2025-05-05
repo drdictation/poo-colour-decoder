@@ -24,7 +24,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # 2) Target topics
 TOPICS = [
     
-    "What happens to the colour of my poo when I take antibiotics"
+    "What happens to the colour of my poo when I am dehydrated"
 ]
 
 # 3) Helper to build a slug and filename
