@@ -1,7 +1,6 @@
-```markdown
 ---
 title: "Why can i see food in my poo?"
-date: 2025-05-11T00:00:00Z
+date: 2025-05-10T00:00:00Z
 draft: false
 summary: "Discover why you can see food in your poo, common causes, digestive health tips, and when to consult a doctor."
 ---
