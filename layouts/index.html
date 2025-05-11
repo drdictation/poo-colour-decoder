@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="generator" content="Hugo 0.146.7">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- RSS feed link -->
+  <!-- RSS feed -->
   <link rel="alternate" type="application/rss+xml"
         title="PoopColor — Daily Poo Facts RSS Feed"
         href="{{ .Site.BaseURL }}index.xml" />
 
+  <!-- Primary SEO meta -->
   <title>{{ .Title }} – {{ .Site.Title }}</title>
   <meta name="description"
         content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
+  <meta name="keywords" content="stool color, poop color analysis, why is my poo green, gut health, digestive health">
 
-  <!-- WebApplication Structured Data -->
+  <!-- Structured data: WebApp -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,7 +30,7 @@
   }
   </script>
 
-  <!-- FAQPage Structured Data -->
+  <!-- Structured data: FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,21 +56,21 @@
   }
   </script>
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="{{ .Permalink }}">
   <meta property="og:title"       content="{{ .Title }} – {{ .Site.Title }}">
   <meta property="og:description" content="Analyse your stool colour in seconds. 100% private and educational.">
   <meta property="og:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:url"         content="{{ .Permalink }}">
   <meta name="twitter:title"       content="{{ .Title }} – {{ .Site.Title }}">
   <meta name="twitter:description" content="Analyse your stool colour in seconds. 100% private and educational.">
   <meta name="twitter:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics / Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -78,6 +81,7 @@
 
   <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
   <div class="container">
 
@@ -88,7 +92,7 @@
 
     <h1>{{ .Title }}</h1>
 
-    <!-- SEO-Rich Intro -->
+    <!-- Hero intro for both users & SEO -->
     <h2>Why Check Your Poo Colour?</h2>
     <p>
       Your stool colour can hint at hydration, diet, and gut health.  
@@ -114,34 +118,37 @@
 
     <hr>
 
-    <!-- Popular Topics for SEO -->
-    <h2>Popular Poo Colour Topics</h2>
-    {{ $recent := first 5 (where .Site.RegularPages "Section" "posts") }}
-    {{ if gt (len $recent) 0 }}
-      <ul class="popular-topics">
-        {{ range sort $recent "Date" "desc" }}
+    <!-- Latest Posts section: **all** posts listed -->
+    <h2>Latest Poo Facts</h2>
+    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+    {{ if gt (len $posts) 0 }}
+      <ul class="post-list">
+        {{ range sort $posts "Date" "desc" }}
           <li>
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
           </li>
         {{ end }}
       </ul>
+    {{ else }}
+      <p>No posts yet—please check back soon.</p>
     {{ end }}
 
     <hr>
 
-    <!-- Visible FAQ Section -->
+    <!-- FAQ on page -->
     <h2>Frequently Asked Questions</h2>
     <dl class="faq">
       <dt>Is this medical advice?</dt>
-      <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional.</dd>
+      <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns.</dd>
 
       <dt>Is my data private?</dt>
-      <dd>Yes—everything runs locally in your browser; we do not collect or store your images or data.</dd>
+      <dd>Yes—everything runs locally in your browser; we do not collect or store your images or any personal data.</dd>
     </dl>
 
     <hr>
 
+    <!-- Link to full archive as fallback -->
     <h2>Daily Poo Facts Archive</h2>
     <p><a href="/posts/">Browse all topics →</a></p>
 
@@ -149,6 +156,7 @@
     <div class="disclaimer-medical">
       <p><em>Not medical advice. If you have health concerns, please consult a qualified professional.</em></p>
     </div>
+
   </div>
 
   <!-- External decoder script -->
