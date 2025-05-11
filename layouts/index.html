@@ -5,15 +5,13 @@
   <meta name="generator" content="Hugo 0.146.7">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- Load AdSense library -->
+  <!-- AdSense -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1685113923075765"
     crossorigin="anonymous"></script>
 
-  <!-- Canonical -->
+  <!-- Canonical & RSS -->
   <link rel="canonical" href="{{ .Permalink }}">
-
-  <!-- RSS feed -->
   <link rel="alternate" type="application/rss+xml"
         title="PoopColor — Daily Poo Facts RSS Feed"
         href="{{ .Site.BaseURL }}index.xml" />
@@ -23,7 +21,7 @@
   <meta name="description"
         content="PoopColor Decoder: Instantly analyse your stool colour to learn what your body is telling you about hydration, diet & gut health. 100% private, no uploads.">
   <meta name="keywords"
-        content="poop color, stool color analysis, gut health, why is my poo green, what does yellow stool mean">
+        content="poop color, stool color analysis, why is my poo green, what does yellow stool mean, is black stool normal, gut health">
 
   <!-- Structured data: WebApplication -->
   <script type="application/ld+json">
@@ -39,33 +37,46 @@
   }
   </script>
 
-  <!-- Structured data: FAQ -->
+  <!-- Structured data: FAQPage -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"Is this medical advice?","acceptedAnswer":{"@type":"Answer","text":"No—entertainment & educational only. Consult a professional for medical concerns."}},
-      {"@type":"Question","name":"Is my data private?","acceptedAnswer":{"@type":"Answer","text":"Yes—runs entirely in your browser; no images or personal data are ever collected."}}
+      {
+        "@type":"Question",
+        "name":"Is this medical advice?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"No—entertainment & educational only. Consult a professional for medical concerns."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Is my data private?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes—runs entirely in your browser; no images or personal data are ever collected."
+        }
+      }
     ]
   }
   </script>
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="{{ .Permalink }}">
   <meta property="og:title"       content="{{ .Title }} – {{ .Site.Title }}">
   <meta property="og:description" content="Instant in-browser tool to decode your stool colour and learn what it means for your gut health.">
   <meta property="og:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:url"         content="{{ .Permalink }}">
   <meta name="twitter:title"       content="{{ .Title }} – {{ .Site.Title }}">
   <meta name="twitter:description" content="Decode your stool colour in seconds—100% private, educational & fun.">
   <meta name="twitter:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
-  <!-- Google Analytics / Tag -->
+  <!-- Google Analytics (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
   <script>
     window.dataLayer = window.dataLayer||[];
@@ -74,7 +85,11 @@
     gtag('config','G-XPZVC63DTR',{anonymize_ip:true});
   </script>
 
+  <!-- Your CSS -->
   <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Our decoder code, deferred -->
+  <script defer src="/js/decoder.js"></script>
 </head>
 
 <body>
@@ -88,6 +103,9 @@
         or “is black stool normal?”  
         <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives you quick gut-health insights.
       </p>
+      <!-- Hidden file input + visible button -->
+      <input type="file" id="file" accept="image/*" style="display:none;">
+      <canvas id="can" style="display:none;"></canvas>
       <button id="uploadBtn" class="btn-primary">
         Upload Your Photo →
       </button>
@@ -128,16 +146,14 @@
       </p>
     </section>
 
-    <!-- 5. Decoder UI -->
+    <!-- 5. Decoder UI & Results -->
     <section id="decoder-ui">
-      <!-- hidden file input -->
-      <input type="file" id="file" accept="image/*" style="display:none;">
       <div id="result" class="result">
         <p class="placeholder">Upload a photo to decode its colour…</p>
       </div>
     </section>
 
-    <!-- 6. Latest Posts inline -->
+    <!-- 6. Latest Posts -->
     <section id="latest-posts">
       <h2>Latest Poo Facts</h2>
       {{ $posts := where .Site.RegularPages "Section" "posts" }}
@@ -146,7 +162,9 @@
           {{ range first 10 (sort $posts "Date" "desc") }}
             <li>
               <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "Jan 2, 2006" }}
+              </time>
             </li>
           {{ end }}
         </ul>
@@ -156,7 +174,7 @@
       {{ end }}
     </section>
 
-    <!-- 7. On-page FAQ -->
+    <!-- 7. FAQ on Page -->
     <section id="onpage-faq">
       <h2>Frequently Asked Questions</h2>
       <dl class="faq">
@@ -177,15 +195,7 @@
       </p>
       <p style="font-size:.8rem;color:#666;">© {{ now.Format "2006" }} PoopColor Decoder</p>
     </footer>
-  </div>
 
-  <!-- 9. External decoder logic & upload wiring -->
-  <script src="/js/decoder.js"></script>
-  <script>
-    // wire up the hero button to the hidden file input
-    document.getElementById('uploadBtn').addEventListener('click', () => {
-      document.getElementById('file').click();
-    });
-  </script>
+  </div>
 </body>
 </html>
