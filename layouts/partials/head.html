@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.LanguageCode | default "en" }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Poo Color Decoder – Instantly Check Stool Colors</title>
-  <meta name="description" content="Analyse your stool color in seconds. 100% private. Fun, educational, and medically informed.">
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ .Permalink }}">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Primary SEO meta -->
+  <title>{{ if .Title }}{{ .Title }} – {{ end }}{{ .Site.Title }}</title>
+  <meta name="description"
+        content="{{ with .Params.description }}{{ . }}{{ else }}Analyse your stool colour in seconds—100% private, fun, and medically informed.{{ end }}">
+  <meta name="keywords"
+        content="{{ with .Params.keywords }}{{ . }}{{ else }}poop color, stool color analysis, gut health, why is my poo green, what does yellow stool mean{{ end }}">
+
+  <!-- Google Analytics / gtag.js -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,17 +25,18 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://poopcolor.info/">
-  <meta property="og:title"       content="Poo Color Decoder – Instantly Check Stool Colors">
-  <meta property="og:description" content="Analyse your stool color in seconds. 100% private. Fun, educational, and medically informed.">
-  <meta property="og:image"       content="https://poopcolor.info/poo-decoder-preview.png">
+  <meta property="og:url"         content="{{ .Permalink }}">
+  <meta property="og:title"       content="{{ if .Title }}{{ .Title }} – {{ end }}{{ .Site.Title }}">
+  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}Analyse your stool colour in seconds—100% private, fun, and medically informed.{{ end }}">
+  <meta property="og:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:url"         content="https://poopcolor.info/">
-  <meta name="twitter:title"       content="Poo Color Decoder – Instantly Check Stool Colors">
-  <meta name="twitter:description" content="Analyse your stool color in seconds. 100% private. Fun, educational, and medically informed.">
-  <meta name="twitter:image"       content="https://poopcolor.info/poo-decoder-preview.png">
+  <meta name="twitter:url"         content="{{ .Permalink }}">
+  <meta name="twitter:title"       content="{{ if .Title }}{{ .Title }} – {{ end }}{{ .Site.Title }}">
+  <meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}Analyse your stool colour in seconds—100% private, fun, and medically informed.{{ end }}">
+  <meta name="twitter:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/styles.css">
 </head>
