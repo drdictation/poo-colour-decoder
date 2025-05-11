@@ -5,6 +5,9 @@
   <meta name="generator" content="Hugo 0.146.7">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ .Permalink }}">
+
   <!-- RSS feed -->
   <link rel="alternate" type="application/rss+xml"
         title="PoopColor — Daily Poo Facts RSS Feed"
@@ -13,44 +16,38 @@
   <!-- Primary SEO meta -->
   <title>{{ .Title }} – {{ .Site.Title }}</title>
   <meta name="description"
-        content="Poo Colour Decoder: Instantly analyse your stool colour for fun, education & gut-health insights. 100% private, zero uploads.">
-  <meta name="keywords" content="stool color, poop color analysis, why is my poo green, gut health, digestive health">
+        content="PoopColor Decoder: Instantly analyse your stool colour to learn what your body is telling you about hydration, diet & gut health. 100% private, no uploads.">
+  <meta name="keywords" content="poop color, stool color analysis, why is my poo green, what does yellow stool mean, is black stool normal, gut health">
 
-  <!-- Structured data: WebApp -->
+  <!-- Structured data: WebApplication -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "PoopColour Decoder",
-    "description": "Analyse your stool color in seconds. 100% private, fun, educational, and medically informed.",
-    "url": "{{ .Site.BaseURL }}",
-    "applicationCategory": "HealthApplication",
-    "operatingSystem": "All",
-    "keywords": "stool color, poop color analysis, stool color meaning, gut health"
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"PoopColor Decoder",
+    "description":"Analyse your stool color in seconds—fun, private, in-browser tool with gut-health insights.",
+    "url":"{{ .Site.BaseURL }}",
+    "applicationCategory":"HealthApplication",
+    "operatingSystem":"All",
+    "keywords":"poop color, stool analysis, gut health"
   }
   </script>
 
   <!-- Structured data: FAQ -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
       {
-        "@type": "Question",
-        "name": "Is this medical advice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns."
-        }
+        "@type":"Question",
+        "name":"Is this medical advice?",
+        "acceptedAnswer":{"@type":"Answer","text":"No—entertainment & educational only. Consult a professional for medical concerns."}
       },
       {
-        "@type": "Question",
-        "name": "Is my data private?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes—everything runs locally in your browser; we do not collect or store your images or any personal data."
-        }
+        "@type":"Question",
+        "name":"Is my data private?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes—runs entirely in your browser; no images or personal data are ever collected."}
       }
     ]
   }
@@ -60,23 +57,23 @@
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="{{ .Permalink }}">
   <meta property="og:title"       content="{{ .Title }} – {{ .Site.Title }}">
-  <meta property="og:description" content="Analyse your stool colour in seconds. 100% private and educational.">
+  <meta property="og:description" content="Instant in-browser tool to decode your stool colour and learn what it means for your gut health.">
   <meta property="og:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:url"         content="{{ .Permalink }}">
   <meta name="twitter:title"       content="{{ .Title }} – {{ .Site.Title }}">
-  <meta name="twitter:description" content="Analyse your stool colour in seconds. 100% private and educational.">
+  <meta name="twitter:description" content="Decode your stool colour in seconds—100% private, educational & fun.">
   <meta name="twitter:image"       content="{{ .Site.BaseURL }}poo-decoder-preview.png">
 
   <!-- Google Analytics / Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPZVC63DTR"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    window.dataLayer = window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XPZVC63DTR', { anonymize_ip: true });
+    gtag('config','G-XPZVC63DTR',{anonymize_ip:true});
   </script>
 
   <link rel="stylesheet" href="/css/styles.css">
@@ -85,81 +82,140 @@
 <body>
   <div class="container">
 
-    <!-- Entertainment disclaimer -->
-    <div class="disclaimer-entertainment">
-      <strong>For entertainment only:</strong> this tool is not a medical device.
-    </div>
+    <!-- 1. Hero / CTA -->
+    <section id="hero">
+      <h1>{{ .Title }}</h1>
+      <p class="hero-sub">
+        Ever wondered “why is my stool green?”, “what does yellow stool mean?”, “is black stool normal?”, or “why is my poo pale?”  
+        <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives you quick gut-health insights.
+      </p>
+      <button onclick="document.getElementById('file').click()" class="btn-primary">
+        Upload Your Photo →
+      </button>
+      <p class="hero-note">
+        Supports Red • Brown • Yellow • Green • Black • Pale
+      </p>
+    </section>
 
-    <h1>{{ .Title }}</h1>
-
-    <!-- Hero intro for both users & SEO -->
-    <h2>Why Check Your Poo Colour?</h2>
-    <p>
-      Your stool colour can hint at hydration, diet, and gut health.  
-      Our <strong>Poo Colour Decoder</strong> runs entirely in your browser—no uploads, 100% private—and instantly classifies your stool shade.
-    </p>
-    <p><strong>100% private:</strong> nothing leaves your device.</p>
-
-    <!-- Ad slot top -->
-    <div id="ad-top" class="ad-slot"></div>
-
-    <!-- Decoder UI -->
-    <div class="decoder">
-      <input type="file" id="file" accept="image/*">
-      <canvas id="can" style="display:none;"></canvas>
-      <button id="shareBtn" style="display:none;">Share score</button>
-    </div>
-    <div id="result" class="result">
-      <p class="placeholder">Upload a photo to decode its colour…</p>
-    </div>
-
-    <!-- Ad slot bottom -->
-    <div id="ad-bottom" class="ad-slot"></div>
-
-    <hr>
-
-    <!-- Latest Posts section: **all** posts listed -->
-    <h2>Latest Poo Facts</h2>
-    {{ $posts := where .Site.RegularPages "Section" "posts" }}
-    {{ if gt (len $posts) 0 }}
-      <ul class="post-list">
-        {{ range sort $posts "Date" "desc" }}
-          <li>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-          </li>
-        {{ end }}
+    <!-- 2. Common Questions We Answer -->
+    <section id="common-questions">
+      <h2>Common Questions We Answer</h2>
+      <ul>
+        <li><a href="/posts/why-is-my-stool-green-7-common-causes-2025-04-27/">
+            Why is my stool green?
+        </a></li>
+        <li><a href="/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/">
+            What does yellow stool mean?
+        </a></li>
+        <li><a href="/posts/black-stool-after-iron-supplements-what-to-know-2025-04-27/">
+            Is black stool normal after iron supplements?
+        </a></li>
+        <li><a href="/posts/fasttransit-2025-04-29/">
+            Why is my stool pale or clay-coloured?
+        </a></li>
       </ul>
-    {{ else }}
-      <p>No posts yet—please check back soon.</p>
-    {{ end }}
+    </section>
 
-    <hr>
+    <!-- 3. Features for SEO -->
+    <section id="features">
+      <h2>Why Use PoopColor Decoder?</h2>
+      <ul>
+        <li><strong>Instant Results</strong>: See what your stool colour indicates in seconds.</li>
+        <li><strong>100% Private</strong>: Everything runs in your browser—no images leave your device.</li>
+        <li><strong>Gut Health Tips</strong>: Learn simple dietary tweaks for common colour changes.</li>
+        <li><strong>Daily Poo Facts</strong>: Browse our archive of fun, medically-informed blurbs.</li>
+      </ul>
+    </section>
 
-    <!-- FAQ on page -->
-    <h2>Frequently Asked Questions</h2>
-    <dl class="faq">
-      <dt>Is this medical advice?</dt>
-      <dd>No—this tool is for entertainment and educational use only. Consult a healthcare professional for any medical concerns.</dd>
+    <!-- 4. How It Works -->
+    <section id="how-it-works">
+      <h2>How It Works</h2>
+      <p>
+        Our tool samples the center pixel of your uploaded image, converts its RGB value into HSL, and matches it against six colour zones (Red, Brown, Yellow, Green, Black, Pale).  
+        We then calculate a “Brown Closeness” score, flag any out-of-range hues, and provide tailored diet tips.
+      </p>
+    </section>
 
-      <dt>Is my data private?</dt>
-      <dd>Yes—everything runs locally in your browser; we do not collect or store your images or any personal data.</dd>
-    </dl>
+    <!-- 5. Stool Color Guide -->
+    <section id="color-guide">
+      <h2>Stool Color Guide</h2>
+      <div class="color-grid">
+        <a href="/posts/leafygreens-2025-04-28/">
+          <div class="swatch" style="background:#4caf50;"></div>
+          <span>Green Stool</span>
+        </a>
+        <a href="/posts/high-fat-meals-and-yellow-stool-2025-04-26/">
+          <div class="swatch" style="background:#fdd835;"></div>
+          <span>Yellow Stool</span>
+        </a>
+        <a href="/posts/fasttransit-2025-04-29/">
+          <div class="swatch" style="background:#cfd8dc;"></div>
+          <span>Pale Stool</span>
+        </a>
+        <a href="/posts/iron-2025-04-27/">
+          <div class="swatch" style="background:#212121;"></div>
+          <span>Black Stool</span>
+        </a>
+        <a href="/posts/beetroot-2025-04-26/">
+          <div class="swatch" style="background:#b71c1c;"></div>
+          <span>Red Stool</span>
+        </a>
+        <a href="/posts/dehydration-and-hard-stool-2025-04-26/">
+          <div class="swatch" style="background:#5d4037;"></div>
+          <span>Dark Brown</span>
+        </a>
+      </div>
+    </section>
 
-    <hr>
+    <!-- 6. Decoder UI -->
+    <section id="decoder-ui">
+      <div class="decoder">
+        <input type="file" id="file" accept="image/*">
+        <canvas id="can" style="display:none;"></canvas>
+      </div>
+      <div id="result" class="result">
+        <p class="placeholder">Upload a photo to decode its colour…</p>
+      </div>
+    </section>
 
-    <!-- Link to full archive as fallback -->
-    <h2>Daily Poo Facts Archive</h2>
-    <p><a href="/posts/">Browse all topics →</a></p>
+    <!-- 7. Latest Posts inline -->
+    <section id="latest-posts">
+      <h2>Latest Poo Facts</h2>
+      {{ $posts := where .Site.RegularPages "Section" "posts" }}
+      {{ if gt (len $posts) 0 }}
+        <ul class="post-list">
+          {{ range first 10 (sort $posts "Date" "desc") }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <p>No posts yet—please check back soon.</p>
+      {{ end }}
+      <p><a href="/posts/">Browse full archive →</a></p>
+    </section>
 
-    <!-- Medical disclaimer -->
+    <!-- 8. FAQ on page -->
+    <section id="onpage-faq">
+      <h2>Frequently Asked Questions</h2>
+      <dl class="faq">
+        <dt>Is this medical advice?</dt>
+        <dd>No—entertainment & educational only. Consult a qualified professional for any health concerns.</dd>
+        <dt>Is my data private?</dt>
+        <dd>Yes—runs locally in your browser; no data is transferred or stored.</dd>
+      </dl>
+    </section>
+
+    <!-- 9. Disclaimers -->
     <div class="disclaimer-medical">
       <p><em>Not medical advice. If you have health concerns, please consult a qualified professional.</em></p>
     </div>
 
   </div>
 
-  <!-- External decoder script -->
+  <!-- External decoder logic -->
   <script src="/js/decoder.js"></script>
 </body>
 </html>
