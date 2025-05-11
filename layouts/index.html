@@ -81,144 +81,127 @@
 
 <body>
   <div class="layout">
-    <!-- Left sidebar (desktop only) -->
+
+    <!-- Left Sidebar (desktop only) -->
     <aside class="sidebar sidebar-left">
       <div class="ad-slot ad-vertical">
-        <!-- Paste your left-column AdSense code here -->
+        <!-- LEFT VERTICAL AD: paste your code here -->
       </div>
     </aside>
 
-    <!-- Main content area -->
+    <!-- Main Content -->
     <main class="main-content">
+      <div class="container">
 
-      <!-- 1. Hero / CTA -->
-      <section id="hero">
-        <h1>{{ .Title }}</h1>
-        <p class="hero-sub">
-          Ever wondered “why is my stool green?”, “what does yellow stool mean?”, “is black stool normal?”, or “why is my poo pale?”  
-          <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives you quick gut-health insights.
-        </p>
-        <button onclick="document.getElementById('file').click()" class="btn-primary">
-          Upload Your Photo →
-        </button>
-        <p class="hero-note">
-          Supports Red • Brown • Yellow • Green • Black • Pale
-        </p>
-      </section>
+        <!-- Hero / CTA -->
+        <section id="hero">
+          <h1>{{ .Title }}</h1>
+          <p class="hero-sub">
+            Ever wondered “why is my stool green?”, “what does yellow stool mean?”, “is black stool normal?”, or “why is my poo pale?”  
+            <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives quick gut-health insights.
+          </p>
+          <button onclick="document.getElementById('file').click()" class="btn-primary">
+            Upload Your Photo →
+          </button>
+          <p class="hero-note">Supports Red • Brown • Yellow • Green • Black • Pale</p>
+        </section>
 
-      <!-- Horizontal banner ad -->
-      <div class="ad-slot ad-horizontal" id="ad-hero">
-        <!-- Paste your 728×90 or responsive banner code here -->
-      </div>
-
-      <!-- 2. Common Questions We Answer -->
-      <section id="common-questions">
-        <h2>Common Questions We Answer</h2>
-        <ul>
-          <li><a href="/posts/why-is-my-stool-green-7-common-causes-2025-04-27/">Why is my stool green?</a></li>
-          <li><a href="/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/">What does yellow stool mean?</a></li>
-          <li><a href="/posts/black-stool-after-iron-supplements-what-to-know-2025-04-27/">Is black stool normal after iron supplements?</a></li>
-          <li><a href="/posts/fasttransit-2025-04-29/">Why is my stool pale or clay-coloured?</a></li>
-        </ul>
-      </section>
-
-      <div class="ad-slot ad-horizontal" id="ad-common-questions">
-        <!-- Banner ad between FAQs -->
-      </div>
-
-      <!-- 3. Features for SEO -->
-      <section id="features">
-        <h2>Why Use PoopColor Decoder?</h2>
-        <ul>
-          <li><strong>Instant Results</strong>: See what your stool colour indicates in seconds.</li>
-          <li><strong>100% Private</strong>: Everything runs in your browser—no images leave your device.</li>
-          <li><strong>Gut Health Tips</strong>: Learn simple dietary tweaks for common colour changes.</li>
-          <li><strong>Daily Poo Facts</strong>: Browse our archive of fun, medically-informed blurbs.</li>
-        </ul>
-      </section>
-
-      <div class="ad-slot ad-horizontal" id="ad-features">
-        <!-- Banner ad between features -->
-      </div>
-
-      <!-- 4. How It Works -->
-      <section id="how-it-works">
-        <h2>How It Works</h2>
-        <p>
-          Our tool samples the center pixel of your uploaded image, converts its RGB value into HSL, and matches it against six colour zones (Red, Brown, Yellow, Green, Black, Pale).  
-          We then calculate a “Brown Closeness” score, flag any out-of-range hues, and provide tailored diet tips.
-        </p>
-      </section>
-
-      <div class="ad-slot ad-horizontal" id="ad-how-it-works">
-        <!-- Banner ad between explanation -->
-      </div>
-
-      <!-- 5. Decoder UI -->
-      <section id="decoder-ui">
-        <div class="decoder">
-          <input type="file" id="file" accept="image/*">
-          <canvas id="can" style="display:none;"></canvas>
+        <!-- Horizontal ad slot -->
+        <div class="ad-slot ad-horizontal">
+          <!-- HORIZONTAL AD: paste your code here -->
         </div>
-        <div id="result" class="result">
-          <p class="placeholder">Upload a photo to decode its colour…</p>
+
+        <!-- Decoder UI -->
+        <section id="decoder-ui">
+          <div class="decoder">
+            <input type="file" id="file" accept="image/*">
+            <canvas id="can" style="display:none;"></canvas>
+          </div>
+          <div id="result" class="result">
+            <p class="placeholder">Upload a photo to decode its colour…</p>
+          </div>
+        </section>
+
+        <!-- Another horizontal ad -->
+        <div class="ad-slot ad-horizontal">
+          <!-- HORIZONTAL AD: paste your code here -->
         </div>
-      </section>
 
-      <div class="ad-slot ad-horizontal" id="ad-decoder-ui">
-        <!-- Banner ad right after decoder -->
-      </div>
-
-      <!-- 6. Latest Posts inline -->
-      <section id="latest-posts">
-        <h2>Latest Poo Facts</h2>
-        {{ $posts := where .Site.RegularPages "Section" "posts" }}
-        {{ if gt (len $posts) 0 }}
-          <ul class="post-list">
-            {{ range first 10 (sort $posts "Date" "desc") }}
-              <li>
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-              </li>
-            {{ end }}
+        <!-- Common Questions We Answer -->
+        <section id="common-questions">
+          <h2>Common Questions We Answer</h2>
+          <ul>
+            <li><a href="/posts/why-is-my-stool-green-7-common-causes-2025-04-27/">Why is my stool green?</a></li>
+            <li><a href="/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/">What does yellow stool mean?</a></li>
+            <li><a href="/posts/black-stool-after-iron-supplements-what-to-know-2025-04-27/">Is black stool normal after iron supplements?</a></li>
+            <li><a href="/posts/why-is-my-poo-pale-common-causes-2025-04-29/">Why is my stool pale or clay-coloured?</a></li>
           </ul>
-        {{ else }}
-          <p>No posts yet—please check back soon.</p>
-        {{ end }}
-        <p><a href="/posts/">Browse full archive →</a></p>
-      </section>
+        </section>
 
-      <div class="ad-slot ad-horizontal" id="ad-latest-posts">
-        <!-- Banner ad after posts -->
-      </div>
+        <!-- Features for SEO -->
+        <section id="features">
+          <h2>Why Use PoopColor Decoder?</h2>
+          <ul>
+            <li><strong>Instant Results</strong>: See what your stool colour indicates in seconds.</li>
+            <li><strong>100% Private</strong>: Everything runs in your browser—no images leave your device.</li>
+            <li><strong>Gut Health Tips</strong>: Learn simple dietary tweaks for common colour changes.</li>
+            <li><strong>Daily Poo Facts</strong>: Browse our archive of fun, medically-informed blurbs.</li>
+          </ul>
+        </section>
 
-      <!-- 7. FAQ on page -->
-      <section id="onpage-faq">
-        <h2>Frequently Asked Questions</h2>
-        <dl class="faq">
-          <dt>Is this medical advice?</dt>
-          <dd>No—entertainment & educational only. Consult a qualified professional for any health concerns.</dd>
-          <dt>Is my data private?</dt>
-          <dd>Yes—runs locally in your browser; no data is transferred or stored.</dd>
-        </dl>
-      </section>
+        <!-- How It Works -->
+        <section id="how-it-works">
+          <h2>How It Works</h2>
+          <p>
+            We sample the center pixel of your image, convert its RGB to HSL, then match it against six colour zones (Red, Brown, Yellow, Green, Black, Pale).  
+            A “Brown Closeness” score is calculated, out-of-range hues are flagged, and tailored diet tips are provided.
+          </p>
+        </section>
 
-      <div class="ad-slot ad-horizontal" id="ad-faq">
-        <!-- Banner ad before final disclaimer -->
-      </div>
+        <!-- Latest Posts inline -->
+        <section id="latest-posts">
+          <h2>Latest Poo Facts</h2>
+          {{ $posts := where .Site.RegularPages "Section" "posts" }}
+          {{ if gt (len $posts) 0 }}
+            <ul class="post-list">
+              {{ range first 10 (sort $posts "Date" "desc") }}
+                <li>
+                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+                </li>
+              {{ end }}
+            </ul>
+          {{ else }}
+            <p>No posts yet—please check back soon.</p>
+          {{ end }}
+          <p><a href="/posts/">Browse full archive →</a></p>
+        </section>
 
-      <!-- 8. Disclaimers -->
-      <div class="disclaimer-medical">
-        <p><em>Not medical advice. If you have health concerns, please consult a qualified professional.</em></p>
+        <!-- FAQ on page -->
+        <section id="onpage-faq">
+          <h2>Frequently Asked Questions</h2>
+          <dl class="faq">
+            <dt>Is this medical advice?</dt>
+            <dd>No—entertainment & educational only. Consult a qualified professional for any health concerns.</dd>
+            <dt>Is my data private?</dt>
+            <dd>Yes—runs locally in your browser; no data is transferred or stored.</dd>
+          </dl>
+        </section>
+
+        <!-- Medical disclaimer -->
+        <div class="disclaimer-medical">
+          <p><em>Not medical advice. If you have health concerns, please consult a qualified professional.</em></p>
+        </div>
       </div>
     </main>
 
-    <!-- Right sidebar (desktop only) -->
+    <!-- Right Sidebar (desktop only) -->
     <aside class="sidebar sidebar-right">
       <div class="ad-slot ad-vertical">
-        <!-- Paste your right-column AdSense code here -->
+        <!-- RIGHT VERTICAL AD: paste your code here -->
       </div>
     </aside>
+
   </div>
 
   <!-- External decoder logic -->

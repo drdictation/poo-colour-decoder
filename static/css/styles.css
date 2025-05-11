@@ -1,3 +1,24 @@
+/* Layout grid for desktop sidebars + main content */
+.layout {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 720px) 160px;
+  gap: 20px;
+  background: var(--accent-light);
+}
+.sidebar {
+  display: none; /* hide on mobile */
+}
+.main-content {
+  /* nothing extra needed—your .container sits inside */
+}
+
+/* show sidebars at ≥1024px */
+@media (min-width: 1024px) {
+  .sidebar {
+    display: block;
+  }
+}
+
 /* Variables */
 :root {
   --brand-brown:   #6d4c41;
@@ -8,49 +29,23 @@
 
 /* Base reset */
 body {
+  margin: 0; padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--accent-light);
   color: var(--text-dark);
-  margin: 0;
-  padding: 0;
 }
 
-/* Layout grid */
-.layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-@media(min-width: 1024px) {
-  .layout {
-    grid-template-columns: 160px 1fr 160px;
-  }
-  .sidebar-left,
-  .sidebar-right {
-    display: block;
-  }
-}
-
-/* Sidebars */
-.sidebar-left,
-.sidebar-right {
-  display: none;
-}
-.sidebar {
-  position: sticky;
-  top: 20px;
-}
-
-/* Main content area */
-.main-content {
-  grid-column: 1 / -1;
+/* Container */
+.container {
+  background: #fff;
+  padding: 20px;
+  margin: 40px auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* Headings & links */
-h1, h2 {
-  color: var(--brand-brown);
-  margin-top: 1.5rem;
-}
+h1, h2 { color: var(--brand-brown); }
 a {
   color: var(--link-blue);
   text-decoration: none;
@@ -58,195 +53,20 @@ a {
 }
 a:hover {
   text-decoration: underline;
-  color: #005bb5;
 }
 
-/* Hero */
-#hero {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-.hero-sub {
-  font-size: 1.1rem;
-  margin: 1rem 0;
-}
-.hero-note {
-  margin-top: .5rem;
-  font-style: italic;
-  color: #555;
-}
+/* Buttons */
 .btn-primary {
   background: var(--brand-brown);
   color: #fff;
-  padding: .75rem 1.5rem;
   border: none;
+  padding: .6rem 1rem;
   border-radius: 4px;
-  font-size: 1rem;
   cursor: pointer;
-  transition: opacity .2s;
+  transition: background .2s;
 }
 .btn-primary:hover {
-  opacity: .9;
-}
-
-/* Sections spacing */
-section {
-  margin: 2rem 0;
-}
-
-/* Common Questions & Features lists */
-#common-questions ul,
-#features ul {
-  list-style: disc inside;
-  margin-left: 1rem;
-}
-#common-questions li,
-#features li {
-  margin: .5rem 0;
-}
-
-/* Decoder & result */
-.decoder {
-  text-align: center;
-  margin: 20px 0;
-}
-input[type="file"] {
-  padding: 8px;
-}
-.result {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-top: 1rem;
-  background: #fafafa;
-}
-.placeholder {
-  color: #777;
-  text-align: center;
-}
-.swatch {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1rem;
-  border: 2px solid var(--brand-brown);
-  border-radius: 4px;
-  transition: transform .2s ease;
-}
-.swatch:hover {
-  transform: scale(1.1);
-}
-
-/* Metrics & foods */
-.metric {
-  display: flex;
-  justify-content: space-between;
-  margin: .5rem 0;
-}
-.metric span {
-  color: #555;
-}
-.foods {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.foods div {
-  background: #fff;
-  padding: .5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-.foods h4 {
-  margin: .5rem 0 .2rem;
-}
-.normal-range {
-  font-size: .9rem;
-  color: #555;
-  margin-top: 1rem;
-  font-style: italic;
-}
-
-/* Badge and gauge */
-.badge {
-  display: inline-block;
-  padding: .2rem .6rem;
-  border-radius: 4px;
-  font-size: .9rem;
-  font-weight: 700;
-  color: #fff;
-}
-.badge-ok { background: #3ca540; }
-.badge-warn { background: #e38a19; }
-.gauge {
-  width: 100%;
-  height: 10px;
-  background: #ddd;
-  border-radius: 5px;
-  margin: .4rem 0;
-  overflow: hidden;
-}
-.gauge-fill {
-  height: 10px;
-  border-radius: 5px;
-  background: var(--brand-brown);
-  width: 0%;
-  transition: width .6s ease;
-}
-
-/* Button share */
-#shareBtn {
-  margin-top: 1rem;
-  display: inline-block;
-}
-
-/* Latest posts list */
-.post-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-}
-.post-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: .5rem 0;
-  border-bottom: 1px solid #eee;
-}
-.post-list a {
-  color: var(--link-blue);
-}
-.post-list time {
-  color: #999;
-  font-size: .9rem;
-}
-
-/* FAQ */
-.faq dt {
-  font-weight: bold;
-  margin-top: 1rem;
-}
-.faq dd {
-  margin: .5rem 0 0 1rem;
-}
-
-/* Ad slots */
-.ad-slot {
-  text-align: center;
-  margin: 1.5rem 0;
-  border: 1px dashed #ccc;
-  background: #fafafa;
-}
-/* Vertical sidebars */
-.ad-vertical {
-  width: 100%;
-  min-height: 600px;
-}
-/* Horizontal banners */
-.ad-horizontal {
-  width: 100%;
-  max-width: 728px;
-  min-height: 90px;
-  margin: 1.5rem auto;
+  background: #543526;
 }
 
 /* Disclaimers */
@@ -262,4 +82,122 @@ input[type="file"] {
   margin-top: 1.5rem;
   font-size: .9rem;
   color: #555;
+}
+
+/* Hero */
+#hero { text-align: center; margin-bottom: 2rem; }
+.hero-sub { margin: .5rem 0 1rem; line-height: 1.4; }
+.hero-note { font-size: .9rem; color: #666; }
+
+/* Decoder & result */
+.decoder { text-align: center; margin: 20px 0; }
+input[type="file"] { padding: 8px; }
+.result {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+  margin-bottom: 1.5rem;
+}
+.placeholder { color: #777; }
+
+/* Metrics & foods */
+.metric {
+  display: flex;
+  justify-content: space-between;
+  margin: .5rem 0;
+}
+.metric span { color: #555; }
+.foods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.foods div {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: .5rem;
+  border-radius: 4px;
+}
+.foods h4 { margin: .5rem 0 .2rem; }
+.normal-range {
+  font-style: italic;
+  font-size: .9rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+/* Badges & gauge */
+.badge {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 4px;
+  font-size: .9rem;
+  font-weight: 700;
+  color: #fff;
+}
+.badge-ok  { background: #3ca540; }
+.badge-warn{ background: #e38a19; }
+
+.gauge {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: .4rem 0;
+}
+.gauge-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--brand-brown);
+  transition: width .6s ease;
+}
+
+/* Ad slots */
+.ad-slot {
+  text-align: center;
+  margin: 1.5rem 0;
+  min-height: 90px;
+  border: 1px dashed #ccc;
+}
+.ad-vertical {
+  width: 120px;
+  height: 600px;
+  margin: 0 auto;
+  border: none;
+}
+.ad-horizontal {
+  width: 100%;
+  height: 100px;
+  border: none;
+}
+
+/* Lists */
+ul, .post-list, .popular-topics {
+  list-style: none;
+  padding: 0;
+}
+.post-list li, .popular-topics li {
+  padding: .5rem 0;
+  border-bottom: 1px solid #eee;
+}
+.post-list a, .popular-topics a {
+  color: var(--link-blue);
+}
+.post-list time, .popular-topics time {
+  color: #999;
+  font-size: .9rem;
+  margin-left: .5rem;
+}
+
+/* FAQ */
+.faq dt {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.faq dd {
+  margin-left: 1rem;
+  margin-bottom: .5rem;
 }
