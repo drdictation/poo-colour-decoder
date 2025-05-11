@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="generator" content="Hugo 0.146.7">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1685113923075765"
-     crossorigin="anonymous"></script>
+
+  <!-- Load AdSense library -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1685113923075765"
+    crossorigin="anonymous"></script>
+
   <!-- Canonical -->
   <link rel="canonical" href="{{ .Permalink }}">
 
@@ -41,16 +45,8 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"Is this medical advice?",
-        "acceptedAnswer":{"@type":"Answer","text":"No—entertainment & educational only. Consult a professional for medical concerns."}
-      },
-      {
-        "@type":"Question",
-        "name":"Is my data private?",
-        "acceptedAnswer":{"@type":"Answer","text":"Yes—runs entirely in your browser; no images or personal data are ever collected."}
-      }
+      {"@type":"Question","name":"Is this medical advice?","acceptedAnswer":{"@type":"Answer","text":"No—entertainment & educational only. Consult a professional for medical concerns."}},
+      {"@type":"Question","name":"Is my data private?","acceptedAnswer":{"@type":"Answer","text":"Yes—runs entirely in your browser; no images or personal data are ever collected."}}
     ]
   }
   </script>
@@ -84,7 +80,7 @@
 <body>
   <div class="container">
 
-    <!-- Hero / CTA -->
+    <!-- 1. Hero / CTA -->
     <section id="hero">
       <h1>{{ .Title }}</h1>
       <p class="hero-sub">
@@ -92,7 +88,7 @@
         or “is black stool normal?”  
         <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives you quick gut-health insights.
       </p>
-      <button onclick="document.getElementById('file').click()" class="btn-primary">
+      <button id="uploadBtn" class="btn-primary">
         Upload Your Photo →
       </button>
       <p class="hero-note">
@@ -100,11 +96,10 @@
       </p>
     </section>
 
-    <!-- Common Questions We Answer -->
+    <!-- 2. Common Questions We Answer -->
     <section id="common-questions">
       <h2>Common Questions We Answer</h2>
       <ul>
-        {{/* adjust these as needed */}}
         <li><a href="/posts/why-is-my-stool-green-7-common-causes-2025-04-27/">Why is my stool green?</a></li>
         <li><a href="/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/">What does yellow stool mean?</a></li>
         <li><a href="/posts/black-stool-after-iron-supplements-what-to-know-2025-04-27/">Is black stool normal after iron supplements?</a></li>
@@ -112,7 +107,7 @@
       </ul>
     </section>
 
-    <!-- Features for SEO -->
+    <!-- 3. Features for SEO -->
     <section id="features">
       <h2>Why Use PoopColor Decoder?</h2>
       <ul>
@@ -123,7 +118,7 @@
       </ul>
     </section>
 
-    <!-- How It Works -->
+    <!-- 4. How It Works -->
     <section id="how-it-works">
       <h2>How It Works</h2>
       <p>
@@ -133,17 +128,16 @@
       </p>
     </section>
 
-    <!-- Decoder UI -->
+    <!-- 5. Decoder UI -->
     <section id="decoder-ui">
-      <div class="decoder">
-        <input type="file" id="file" accept="image/*" style="display:none;">
-      </div>
+      <!-- hidden file input -->
+      <input type="file" id="file" accept="image/*" style="display:none;">
       <div id="result" class="result">
         <p class="placeholder">Upload a photo to decode its colour…</p>
       </div>
     </section>
 
-    <!-- Latest Posts -->
+    <!-- 6. Latest Posts inline -->
     <section id="latest-posts">
       <h2>Latest Poo Facts</h2>
       {{ $posts := where .Site.RegularPages "Section" "posts" }}
@@ -152,9 +146,7 @@
           {{ range first 10 (sort $posts "Date" "desc") }}
             <li>
               <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-              <time datetime="{{ .Date.Format "2006-01-02" }}">
-                {{ .Date.Format "Jan 2, 2006" }}
-              </time>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
             </li>
           {{ end }}
         </ul>
@@ -164,18 +156,18 @@
       {{ end }}
     </section>
 
-    <!-- On-page FAQ -->
+    <!-- 7. On-page FAQ -->
     <section id="onpage-faq">
       <h2>Frequently Asked Questions</h2>
       <dl class="faq">
         <dt>Is this medical advice?</dt>
-        <dd>No—entertainment &amp; educational only. Consult a qualified professional for any health concerns.</dd>
+        <dd>No—entertainment & educational only. Consult a qualified professional for any health concerns.</dd>
         <dt>Is my data private?</dt>
         <dd>Yes—runs locally in your browser; no data is transferred or stored.</dd>
       </dl>
     </section>
 
-    <!-- Footer with Privacy & About -->
+    <!-- 8. Footer with Privacy & About -->
     <footer class="site-footer">
       <hr>
       <p>
@@ -185,10 +177,15 @@
       </p>
       <p style="font-size:.8rem;color:#666;">© {{ now.Format "2006" }} PoopColor Decoder</p>
     </footer>
-
   </div>
 
-  <!-- External decoder logic -->
+  <!-- 9. External decoder logic & upload wiring -->
   <script src="/js/decoder.js"></script>
+  <script>
+    // wire up the hero button to the hidden file input
+    document.getElementById('uploadBtn').addEventListener('click', () => {
+      document.getElementById('file').click();
+    });
+  </script>
 </body>
 </html>
