@@ -11,6 +11,6 @@ On this site you can:
 
 - **Instantly** analyse your stool colour in your browser (no uploads, 100 % private).  
 - Read bite-sized “Daily Poo Facts” to learn what different shades might mean.  
-- Browse SEO-optimized posts about common questions like “Why is my poo green?” or “What does yellow stool mean?”
+- Posts about common questions like “Why is my poo green?” or “What does yellow stool mean?”
 
 Our goal is to make gut-health fun, informative, and accessible. Enjoy responsibly—and remember, this is for **entertainment & educational purposes only**, not medical advice.

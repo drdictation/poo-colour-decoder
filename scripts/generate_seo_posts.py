@@ -24,7 +24,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # 2) Target topics
 TOPICS = [
     
-    "Why can i see food in my poo?"
+    "What does coffee do the color and consistency of my poo?"
 ]
 
 # 3) Helper to build a slug and filename
