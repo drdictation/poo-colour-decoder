@@ -24,7 +24,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # 2) Target topics
 TOPICS = [
     
-    "Is brown the only normal color of poo?"
+    "Red Stool vs. Blood in Stool: What’s the Difference?"
 ]
 
 # 3) Helper to build a slug and filename
