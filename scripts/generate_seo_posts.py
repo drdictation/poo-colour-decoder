@@ -24,7 +24,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # 2) Target topics
 TOPICS = [
     
-    "Black or Tarry Stool: When to Worry"
+    "Do you have orange stools?"
 ]
 
 # 3) Helper to build a slug and filename
