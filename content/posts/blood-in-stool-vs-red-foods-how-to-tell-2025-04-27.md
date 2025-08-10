@@ -19,7 +19,7 @@ Seeing red in your bowel movement can be confusing, especially when trying to de
 
 Many foods can change stool color to shades of red or dark brown without indicating bleeding. Common culprits include:
 
-- **Beets**: Contain betalains, pigments that can cause bright red stools or urine, known as beeturia.
+- **[Beets](../red-poo-beetroot)**: Contain betalains, pigments that can cause bright red stools or urine, known as beeturia.
 - **Tomatoes and tomato-based sauces**: Their natural red pigments sometimes remain visible in stool.
 - **Red gelatin or candies**: Artificial food coloring can tint stool temporarily.
 - **Red drinks**: Fruit punches or cranberry juice may cause color changes.
@@ -42,7 +42,7 @@ In these cases, blood may appear as bright red streaks or mixed throughout the s
 ### Blood in Stool vs Red Foods: Stool Color Variations and What They Mean
 
 - **Bright red blood**: Usually indicates bleeding in the lower gastrointestinal tract (rectum, anus, sigmoid colon).
-- **Dark, tarry stools ([melena](https://www.healthline.com/health/melena))**: Indicates digested blood from bleeding in the upper gastrointestinal tract (stomach, small intestine).
+- **[Dark, tarry stools (melena)](../black-or-tarry-stool-when-to-worry-2025-05-30)**: Indicates digested blood from bleeding in the upper gastrointestinal tract (stomach, small intestine).
 - **Pinkish or reddish discoloration not related to blood**: Often from foods or medications.
 
 Knowing these color nuances can help differentiate blood in stool vs red foods.
@@ -58,15 +58,6 @@ If you notice persistent or unexplained red or dark stools, it’s important to 
 - A family history of colorectal cancer or inflammatory bowel disease.
 
 Even if you suspect food-related discoloration, persistent red stool lasting more than 2–3 days warrants evaluation to rule out bleeding.
-
-## Related Posts
-
-- [Black Stool After Iron Supplements: What to Know](/posts/black-stool-after-iron-supplements-what-to-know)
-- [Why Is My Stool Green? 7 Common Causes](/posts/why-is-my-stool-green-7-common-causes)
-- [Common Causes of Black Stool and What They Mean](/posts/common-causes-of-black-stool)
-- [How to Recognize Hemorrhoid Symptoms Quickly](/posts/recognize-hemorrhoid-symptoms)
-- [Your Guide to Digestive Health: When to See a Doctor](/posts/digestive-health-guide)
-- [Foods That Affect Stool Color and What to Expect](/posts/foods-affecting-stool-color)
 
 ## Try It Yourself
 

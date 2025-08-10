@@ -23,7 +23,7 @@ One of the leading and most benign causes of orange stools is what you eat. Food
 
 ### Digestive Transit Time Changes
 
-When stool moves too quickly through the intestines—such as with [diarrhea](https://www.mayoclinic.org/diseases-conditions/diarrhea/symptoms-causes/syc-20352241)—the bile pigments that normally give stool its brown color don’t have enough time to break down fully. This can result in orange or yellowish stools.
+When stool moves too quickly through the intestines—such as with [diarrhea](https://www.mayoclinic.org/diseases-conditions/diarrhea/symptoms-causes/syc-20352241)—the bile pigments that normally give stool its brown color don’t have enough time to break down fully. This can result in orange or [yellowish stools](../why-is-my-poo-yellow-7-common-causes-2025-04-28).
 
 ### Medication and Supplements
 
@@ -31,7 +31,7 @@ Certain medications, including [antacids containing aluminum hydroxide](https://
 
 ### Liver and Gallbladder Conditions
 
-Problems with bile production or flow, such as [bile duct obstruction](https://my.clevelandclinic.org/health/diseases/15272-bile-duct-obstruction), [gallstones](https://www.mayoclinic.org/diseases-conditions/gallstones/symptoms-causes/syc-20354214), or [liver disease](https://medlineplus.gov/liverdiseases.html), can affect stool color. Bile is normally a greenish fluid that becomes brown when digested; disruptions here can cause orange or pale stools. If you **have orange stools** accompanied by other symptoms like [jaundice](https://www.webmd.com/hepatitis/jaundice-know-the-signs), abdominal pain, or dark urine, seek medical advice promptly.
+Problems with bile production or flow, such as [bile duct obstruction](https://my.clevelandclinic.org/health/diseases/15272-bile-duct-obstruction), [gallstones](https://www.mayoclinic.org/diseases-conditions/gallstones/symptoms-causes/syc-20354214), or [liver disease](https://medlineplus.gov/liverdiseases.html), can affect stool color. Bile is normally a greenish fluid that becomes brown when digested; disruptions here can cause orange or [pale stools](../why-is-my-poo-pale-common-causes-2025-04-29). If you **have orange stools** accompanied by other symptoms like [jaundice](https://www.webmd.com/hepatitis/jaundice-know-the-signs), abdominal pain, or dark urine, seek medical advice promptly.
 
 ### Pancreatic Issues
 
@@ -44,7 +44,7 @@ While orange stools are often harmless and temporary, there are important warnin
 - Persistent stool discoloration lasting more than a few days.
 - Accompanying symptoms such as [abdominal pain](https://www.healthline.com/health/abdominal-pain), nausea, vomiting, weight loss, or fatigue.
 - Signs of jaundice (yellowing of skin or eyes).
-- Blood in stool or [black, tarry stools](https://www.webmd.com/digestive-disorders/black-stools-causes).
+- [Blood in stool](../red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27) or [black, tarry stools](../black-or-tarry-stool-when-to-worry-2025-05-30).
 - Changes in bowel habits lasting over two weeks.
 
 If you **do have orange stools** along with these symptoms, make an appointment with your healthcare provider to undergo appropriate evaluation and testing.

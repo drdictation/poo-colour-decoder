@@ -93,25 +93,180 @@
         or “is black stool normal?”  
         <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives you quick gut-health insights.
       </p>
-      <button id="uploadBtn" class="btn-primary">
-        Upload Your Photo →
-      </button>
-      <p class="hero-note">
-        Supports Red • Brown • Yellow • Green • Black • Pale
-      </p>
     </section>
 
     
-    <section id="decoder-ui">
-      <div class="decoder">
-        <input type="file" id="file" accept="image/*" style="display:none;">
-        <button id="shareBtn" style="display:none;">Share score</button>
-        <canvas id="can" style="display:none;"></canvas>
-      </div>
-      <div id="result" class="result">
-        <p class="placeholder">Upload a photo to decode its colour…</p>
-      </div>
-    </section>
+    <style>
+  .poo-decoder {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  .color-square {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .color-square:hover {
+    transform: scale(1.1);
+  }
+  #decoder-result {
+    margin-top: 20px;
+    font-size: 1.1em;
+    min-height: 50px;
+  }
+</style>
+
+<div class="poo-decoder">
+  <h2>The Poo Colour Decoder</h2>
+  <p>What colour is your poo today? Click a square to find out what it might mean.</p>
+  <div class="color-palette">
+    <div class="color-square" style="background-color: #795548;" data-color="brown"></div>
+    <div class="color-square" style="background-color: #8BC34A;" data-color="green"></div>
+    <div class="color-square" style="background-color: #FFEB3B;" data-color="yellow"></div>
+    <div class="color-square" style="background-color: #212121;" data-color="black"></div>
+    <div class="color-square" style="background-color: #F44336;" data-color="red"></div>
+    <div class="color-square" style="background-color: #E0E0E0;" data-color="pale"></div>
+  </div>
+  <div id="decoder-result">
+    <p><em>Select a colour to begin.</em></p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const colorSquares = document.querySelectorAll('.color-square');
+    const resultDiv = document.getElementById('decoder-result');
+    let blurbsData = null;
+
+    
+    fetch('/blurbs.json')
+      .then(response => response.json())
+      .then(data => {
+        blurbsData = data;
+      })
+      .catch(error => console.error('Error fetching blurbs:', error));
+
+    colorSquares.forEach(square => {
+      square.addEventListener('click', function() {
+        if (!blurbsData) return;
+
+        const color = this.dataset.color;
+        const blurbs = blurbsData[color];
+        const randomBlurb = blurbs[Math.floor(Math.random() * blurbs.length)];
+
+        
+        const articlePaths = {
+            brown: '/posts/is-brown-the-only-normal-color-of-poo-2025-05-19/',
+            green: '/posts/why-is-my-stool-green-7-common-causes-2025-04-27/',
+            yellow: '/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/',
+            black: '/posts/black-or-tarry-stool-when-to-worry-2025-05-30/',
+            red: '/posts/red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27/',
+            pale: '/posts/why-is-my-poo-pale-common-causes-2025-04-29/'
+        };
+
+        const articleLink = articlePaths[color] ? `<a href="${articlePaths[color]}">Learn more about ${color} stool...</a>` : '';
+
+        resultDiv.innerHTML = `<p>${randomBlurb}</p><p>${articleLink}</p>`;
+      });
+    });
+  });
+</script>
+
+
+    
+    <style>
+  .stool-chart-container {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  .stool-chart-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .stool-chart {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .stool-chart th, .stool-chart td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  .stool-chart th {
+    background-color: #f2f2f2;
+  }
+  .color-cell {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+</style>
+
+<div class="stool-chart-container">
+  <h2>Stool Color Reference Chart</h2>
+  <table class="stool-chart">
+    <thead>
+      <tr>
+        <th>Color</th>
+        <th>Common Meaning</th>
+        <th>Learn More</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="color-cell" style="background-color: #795548;"></span> Brown</td>
+        <td>Healthy and normal. Indicates a well-functioning digestive system.</td>
+        <td><a href="/posts/is-brown-the-only-normal-color-of-poo-2025-05-19/">Details →</a></td>
+      </tr>
+      <tr>
+        <td><span class="color-cell" style="background-color: #8BC34A;"></span> Green</td>
+        <td>Often caused by leafy greens or rapid digestion. Usually harmless.</td>
+        <td><a href="/posts/why-is-my-stool-green-7-common-causes-2025-04-27/">Details →</a></td>
+      </tr>
+      <tr>
+        <td><span class="color-cell" style="background-color: #FFEB3B;"></span> Yellow</td>
+        <td>Can indicate excess fat, often due to diet or malabsorption issues.</td>
+        <td><a href="/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/">Details →</a></td>
+      </tr>
+      <tr>
+        <td><span class="color-cell" style="background-color: #212121;"></span> Black</td>
+        <td>Caused by iron supplements or certain foods, but can also signal upper GI bleeding. See a doctor.</td>
+        <td><a href="/posts/black-or-tarry-stool-when-to-worry-2025-05-30/">Details →</a></td>
+      </tr>
+      <tr>
+        <td><span class="color-cell" style="background-color: #F44336;"></span> Red</td>
+        <td>May be from red foods (like beets) or could be blood from the lower GI tract. Requires attention.</td>
+        <td><a href="/posts/red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27/">Details →</a></td>
+      </tr>
+      <tr>
+        <td><span class="color-cell" style="background-color: #E0E0E0;"></span> Pale / White</td>
+        <td>Indicates a lack of bile, which could mean liver or gallbladder issues. See a doctor.</td>
+        <td><a href="/posts/why-is-my-poo-pale-common-causes-2025-04-29/">Details →</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
     
     <section id="common-questions">
@@ -136,14 +291,6 @@
     </section>
 
     
-    <section id="how-it-works">
-      <h2>How It Works</h2>
-      <p>
-        We sample the centre pixel of your uploaded image, convert its RGB value into HSL, and match it
-        against six colour zones (Red, Brown, Yellow, Green, Black, Pale). We then calculate a
-        “Brown Closeness” score, flag any out-of-range hues, and provide tailored diet tips.
-      </p>
-    </section>
 
     
     <section id="latest-posts">
@@ -151,6 +298,11 @@
       
       
         <ul class="post-list">
+          
+            <li>
+              <a href="/posts/the-ultimate-guide-to-stool-color/">The Ultimate Guide to Stool Color: What Your Poo Is Telling You</a>
+              <time datetime="2025-08-10">Aug 10, 2025</time>
+            </li>
           
             <li>
               <a href="/posts/do-you-have-orange-stools-2025-06-18/">Do you have orange stools?</a>
@@ -197,11 +349,6 @@
               <time datetime="2025-05-04">May 4, 2025</time>
             </li>
           
-            <li>
-              <a href="/posts/what-happens-to-the-colour-of-my-poo-when-i-take-antibiotics-2025-05-04/">What happens to the colour of my poo when I take antibiotics</a>
-              <time datetime="2025-05-03">May 3, 2025</time>
-            </li>
-          
         </ul>
         <p><a href="/posts/">Browse full archive →</a></p>
       
@@ -231,6 +378,5 @@
   </div>
 
   
-  <script defer src="/js/decoder.js"></script>
 </body>
 </html>

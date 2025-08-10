@@ -11,7 +11,7 @@ summary: "Discover common causes of pale poo, symptoms to watch for, and when to
 
 ## Overview
 
-If you’ve been wondering **why is my poo pale**, you’re not alone. Pale stool is a noticeable change in bowel movements and often signals an issue relating to bile production or excretion. Normally, bile from the liver gives stool its characteristic brown colour. When this process is disrupted, your poo may appear pale, clay-coloured, or light yellow. This blog explores the common causes behind pale poo and what you should know about this important health sign.
+If you’ve been wondering **why is my poo pale**, you’re not alone. Pale stool is a noticeable change in bowel movements and often signals an issue relating to bile production or excretion. Normally, bile from the liver gives stool its characteristic brown colour. When this process is disrupted, your poo may appear pale, clay-coloured, or [light yellow](../why-is-my-poo-yellow-7-common-causes-2025-04-28). This blog explores the common causes behind pale poo and what you should know about this important health sign.
 
 ## Key Causes
 
@@ -23,7 +23,7 @@ One of the most common reasons for pale poo is a blockage in the bile ducts, whi
 
 ### Liver Problems
 
-Liver diseases such as hepatitis, cirrhosis, or liver failure may disrupt bile production or flow. If your liver isn’t functioning properly, bile secretion decreases, resulting in pale or clay-coloured stool.
+Liver diseases such as hepatitis, cirrhosis, or liver failure may disrupt bile production or flow. If your liver isn’t functioning properly, bile secretion decreases, resulting in [pale or clay-coloured stool](../why-is-my-poo-white-2025-05-06).
 
 **Symptoms to note:** Fatigue, nausea, swelling, jaundice.
 
@@ -50,15 +50,6 @@ If you notice persistent pale poo alongside any of the following symptoms, it is
 - Persistent fatigue or nausea
 
 These signs may indicate underlying liver, gallbladder, or pancreatic disease that requires timely diagnosis and treatment.
-
-## Related Posts
-
-
-
-- [Understanding Stool Colours and What They Mean](#)
-- [Signs and Symptoms of Liver Disease](#)
-- [Gallstones: Causes, Symptoms, and Treatment](#)
-- [How Diet Impacts Your Digestive Health](#)
 
 ## Try It Yourself
 

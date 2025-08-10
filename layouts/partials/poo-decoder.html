@@ -1,0 +1,89 @@
+<style>
+  .poo-decoder {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  .color-square {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .color-square:hover {
+    transform: scale(1.1);
+  }
+  #decoder-result {
+    margin-top: 20px;
+    font-size: 1.1em;
+    min-height: 50px;
+  }
+</style>
+
+<div class="poo-decoder">
+  <h2>The Poo Colour Decoder</h2>
+  <p>What colour is your poo today? Click a square to find out what it might mean.</p>
+  <div class="color-palette">
+    <div class="color-square" style="background-color: #795548;" data-color="brown"></div>
+    <div class="color-square" style="background-color: #8BC34A;" data-color="green"></div>
+    <div class="color-square" style="background-color: #FFEB3B;" data-color="yellow"></div>
+    <div class="color-square" style="background-color: #212121;" data-color="black"></div>
+    <div class="color-square" style="background-color: #F44336;" data-color="red"></div>
+    <div class="color-square" style="background-color: #E0E0E0;" data-color="pale"></div>
+  </div>
+  <div id="decoder-result">
+    <p><em>Select a colour to begin.</em></p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const colorSquares = document.querySelectorAll('.color-square');
+    const resultDiv = document.getElementById('decoder-result');
+    let blurbsData = null;
+
+    // Fetch the JSON data once
+    fetch('/blurbs.json')
+      .then(response => response.json())
+      .then(data => {
+        blurbsData = data;
+      })
+      .catch(error => console.error('Error fetching blurbs:', error));
+
+    colorSquares.forEach(square => {
+      square.addEventListener('click', function() {
+        if (!blurbsData) return;
+
+        const color = this.dataset.color;
+        const blurbs = blurbsData[color];
+        const randomBlurb = blurbs[Math.floor(Math.random() * blurbs.length)];
+
+        // Define paths to articles
+        const articlePaths = {
+            brown: '/posts/is-brown-the-only-normal-color-of-poo-2025-05-19/',
+            green: '/posts/why-is-my-stool-green-7-common-causes-2025-04-27/',
+            yellow: '/posts/why-is-my-poo-yellow-7-common-causes-2025-04-28/',
+            black: '/posts/black-or-tarry-stool-when-to-worry-2025-05-30/',
+            red: '/posts/red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27/',
+            pale: '/posts/why-is-my-poo-pale-common-causes-2025-04-29/'
+        };
+
+        const articleLink = articlePaths[color] ? `<a href="${articlePaths[color]}">Learn more about ${color} stool...</a>` : '';
+
+        resultDiv.innerHTML = `<p>${randomBlurb}</p><p>${articleLink}</p>`;
+      });
+    });
+  });
+</script>

@@ -24,7 +24,7 @@ Certain foods rich in yellow pigments, such as carrots, sweet potatoes, and turm
 
 ### 2. Rapid Transit Time
 
-When stool passes through your intestines too quickly, bile doesn’t have enough time to break down completely. Bile starts off as a greenish fluid that turns brown as it metabolizes. Rapid transit leaves bile yellowish, causing yellow poo. 
+When stool passes through your intestines too quickly, bile doesn’t have enough time to break down completely. Bile starts off as a [greenish fluid](../why-is-my-stool-green-7-common-causes-2025-04-27) that turns brown as it metabolizes. Rapid transit leaves bile yellowish, causing yellow poo. 
 
 ### 3. Malabsorption Disorders
 
@@ -32,7 +32,7 @@ Conditions like [celiac disease](https://www.medlineplus.gov/celiacdisease.html)
 
 ### 4. Gallbladder or Liver Issues
 
-The gallbladder stores bile used to digest fats. Liver or gallbladder problems, such as [bile duct obstruction](https://www.medlineplus.gov/ency/article/000263.htm) or [hepatitis](https://www.medlineplus.gov/hepatitis.html), reduce bile flow into the intestines. Reduced bile can cause stool to appear yellow or clay-colored. This scenario requires medical attention. 
+The gallbladder stores bile used to digest fats. Liver or gallbladder problems, such as [bile duct obstruction](https://www.medlineplus.gov/ency/article/000263.htm) or [hepatitis](https://www.medlineplus.gov/hepatitis.html), reduce bile flow into the intestines. Reduced bile can cause stool to appear [yellow or clay-colored](../why-is-my-poo-pale-common-causes-2025-04-29). This scenario requires medical attention. 
 
 ### 5. Bacterial or Parasitic Infections
 

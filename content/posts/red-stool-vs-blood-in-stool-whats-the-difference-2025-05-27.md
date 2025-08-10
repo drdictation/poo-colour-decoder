@@ -35,7 +35,34 @@ Blood in stool indicates bleeding somewhere along the digestive tract. Causes in
 - **Inflammatory Bowel Disease (IBD):** Chronic inflammation from [Crohn’s disease](https://www.mayoclinic.org/diseases-conditions/crohns-disease/symptoms-causes/syc-20353304) or [ulcerative colitis](https://www.webmd.com/ibd-crohns-disease/ulcerative-colitis/what-is-ulcerative-colitis) can cause bloody diarrhea.
 - **Infections:** Bacterial infections like [E. coli](https://www.cdc.gov/ecoli/index.html) or [Shigella](https://www.cdc.gov/shigella/index.html) may cause inflammation and bleeding.
 - **Polyps and Colon Cancer:** [Colorectal polyps](https://www.mayoclinic.org/diseases-conditions/colon-polyps/symptoms-causes/syc-20352875) or [colon cancer](https://www.cancer.org/cancer/colon-rectal-cancer.html) can bleed; early detection is critical.
-- **Gastrointestinal Ulcers:** [Stomach ulcers](https://www.healthline.com/health/stomach-ulcer) or duodenal ulcers may cause darker or tarry stool but sometimes red blood appears if bleeding is brisk and lower in the tract.
+  - **Gastrointestinal Ulcers:** [Stomach ulcers](https://www.healthline.com/health/stomach-ulcer) or duodenal ulcers may cause [darker or tarry stool](../black-or-tarry-stool-when-to-worry-2025-05-30) but sometimes red blood appears if bleeding is brisk and lower in the tract.
+
+## When to Seek Help
+
+Understanding when red stool vs. blood in stool needs medical attention can make a crucial difference:
+
+- **Seek Medical Help Immediately If:**
+  - You pass large amounts of bright red blood.
+  - You experience dizziness, weakness, or rapid heartbeat.
+  - There is persistent or recurrent bleeding.
+  - You have a [family history of colorectal cancer](https://www.cdc.gov/cancer/colorectal/basic_info/risk_factors.htm) or polyps.
+  - Blood in stool is accompanied by severe abdominal pain, weight loss, or changes in bowel habits.
+
+- **See a Doctor Within a Few Days If:**
+  - You notice red stool but are unsure if it’s caused by diet or bleeding.
+  - You have minor bleeding with no obvious cause.
+  - Symptoms persist or worsen over time.
+
+- **When It May Be Harmless:**
+  - You recently ate foods known to color stool red.
+  - You are taking medications that affect stool color and have no other symptoms.
+
+If in doubt, it’s always best to consult a healthcare professional to rule out significant conditions.
+
+## Try It Yourself
+
+Curious about what your stool color might mean?  
+[**Try our free poo colour decoder!**](https://www.poopcolor.info) Identify what your stool color indicates and get personalized advice on when to seek medical care.
 
 ## When to Seek Help
 

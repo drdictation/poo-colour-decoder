@@ -21,10 +21,26 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "{{ .Title }}",
-    "author": { "@type": "Person", "name": "Dr Chamara Basnayake" },
+    "author": {
+      "@type": "Person",
+      "name": "Dr Chamara Basnayake"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ .Site.BaseURL }}poo-decoder-preview.png"
+      }
+    },
+    "image": "{{ .Site.BaseURL }}poo-decoder-preview.png",
     "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
     "description": "{{ .Params.summary }}",
-    "mainEntityOfPage": "{{ .Permalink }}"
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ .Permalink }}"
+    }
   }
   </script>
 
@@ -73,16 +89,8 @@
         {{ .Content }}
       </section>
 
-      <!-- Related Posts -->
-      <section class="related-posts">
-        <h2>Related Posts</h2>
-        <ul>
-          {{ $all := where .Site.RegularPages "Type" "posts" }}
-          {{ range first 3 (where $all "Permalink" "ne" .Permalink) }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-          {{ end }}
-        </ul>
-      </section>
+      <!-- Author Box -->
+      {{ partial "authorbox.html" . }}
 
       <!-- Prev / Next navigation -->
       <nav class="post-nav">

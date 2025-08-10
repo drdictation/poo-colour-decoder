@@ -93,25 +93,13 @@
         or “is black stool normal?”  
         <strong>PoopColor Decoder</strong> instantly analyses your stool shade—no uploads, 100% private—and gives you quick gut-health insights.
       </p>
-      <button id="uploadBtn" class="btn-primary">
-        Upload Your Photo →
-      </button>
-      <p class="hero-note">
-        Supports Red • Brown • Yellow • Green • Black • Pale
-      </p>
     </section>
 
-    <!-- 2. Decoder UI & Result (moved above Common Questions) -->
-    <section id="decoder-ui">
-      <div class="decoder">
-        <input type="file" id="file" accept="image/*" style="display:none;">
-        <button id="shareBtn" style="display:none;">Share score</button>
-        <canvas id="can" style="display:none;"></canvas>
-      </div>
-      <div id="result" class="result">
-        <p class="placeholder">Upload a photo to decode its colour…</p>
-      </div>
-    </section>
+    <!-- 2. Decoder UI -->
+    {{ partial "poo-decoder.html" . }}
+
+    <!-- 2.5. Stool Chart -->
+    {{ partial "stool-chart.html" . }}
 
     <!-- 3. Common Questions We Answer -->
     <section id="common-questions">
@@ -135,15 +123,7 @@
       </ul>
     </section>
 
-    <!-- 5. How It Works -->
-    <section id="how-it-works">
-      <h2>How It Works</h2>
-      <p>
-        We sample the centre pixel of your uploaded image, convert its RGB value into HSL, and match it
-        against six colour zones (Red, Brown, Yellow, Green, Black, Pale). We then calculate a
-        “Brown Closeness” score, flag any out-of-range hues, and provide tailored diet tips.
-      </p>
-    </section>
+    
 
     <!-- 6. Latest Posts -->
     <section id="latest-posts">
@@ -187,7 +167,6 @@
     </footer>
   </div>
 
-  <!-- External decoder logic (deferred) -->
-  <script defer src="/js/decoder.js"></script>
+  
 </body>
 </html>

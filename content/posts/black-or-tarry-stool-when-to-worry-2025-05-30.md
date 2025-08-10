@@ -28,7 +28,7 @@ One of the most concerning causes of black or tarry stool is bleeding in the [up
 
 Certain medications and supplements can cause stool discoloration without indicating serious problems.
 
-- **[Iron Supplements](https://my.clevelandclinic.org/health/drugs/23458-iron-supplements):** These commonly produce black stools as iron oxidizes.  
+- **[Iron Supplements](../black-stool-after-iron-supplements-what-to-know-2025-04-27):** These commonly produce black stools as iron oxidizes.  
 - **[Bismuth Subsalicylate](https://www.webmd.com/drugs/2/drug-5277/pepto-bismol-oral/details):** Found in medicines like Pepto-Bismol, it can darken stool temporarily.  
 - **[Activated Charcoal](https://www.poison.org/articles/activated-charcoal-160):** Used for poisoning treatment or detox, it may cause black stool.
 
@@ -37,14 +37,14 @@ Certain medications and supplements can cause stool discoloration without indica
 Some foods naturally cause black or dark stools, which are harmless and temporary.
 
 - **Black Licorice, Blueberries, or Blackberries:** Can darken stool color.  
-- **Beets and Spinach:** Though typically cause reddish or green stools, combined with digestive factors may appear darker.
+- **Beets and Spinach:** Though typically cause [reddish](../red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27) or [green stools](../why-is-my-stool-green-7-common-causes-2025-04-27), combined with digestive factors may appear darker.
 
 ### Other Medical Conditions
 
 Less common causes of black or tarry stool include:
 
 - **[Malignancies](https://www.cancer.org/cancer/colon-rectal-cancer.html):** Tumors in the upper GI tract may bleed intermittently.  
-- **[Diverticulosis](https://www.mayoclinic.org/diseases-conditions/diverticulitis/symptoms-causes/syc-20371758):** Though more common cause of bright red blood in stool, sometimes can cause dark stools if mixed with upper GI bleeding.
+- **[Diverticulosis](https://www.mayoclinic.org/diseases-conditions/diverticulitis/symptoms-causes/syc-20371758):** Though more common cause of [bright red blood in stool](../blood-in-stool-vs-red-foods-how-to-tell-2025-04-27), sometimes can cause dark stools if mixed with upper GI bleeding.
 
 ## When to Seek Help
 
@@ -57,13 +57,6 @@ Black or tarry stool always warrants careful attention. You should seek urgent m
 - **A history of [liver disease](https://www.cdc.gov/hepatitis/statistics/index.htm), alcohol use, or NSAID use**, which increase risk of bleeding.  
 
 If you notice any of these, visit a healthcare provider immediately. They might recommend endoscopy, blood tests, or imaging to diagnose the cause and initiate treatment.
-
-## Related Posts
-
-- [Understanding Stool Colors: What’s Normal and What’s Not](#)  
-- [Common Causes of Gastrointestinal Bleeding](#)  
-- [How to Manage Iron Supplement Side Effects](#)  
-- [When to See a Doctor for Digestive Symptoms](#)  
 
 ## Try It Yourself
 

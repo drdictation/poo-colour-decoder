@@ -16,7 +16,7 @@ Understanding *what happens to the colour of my poo when I am dehydrated* can he
 
 ### Water Reabsorption and Stool Colour Changes
 
-When dehydrated, your body tries to conserve as much water as possible. The colon absorbs more water from the stool than usual, making it denser and darker. This is because less water means the bile pigments—which usually give stool a lighter brown colour—become more concentrated, resulting in a deeper shade of brown or even blackish appearance. ([Mayo Clinic](https://www.mayoclinic.org/stool-color/expert-answers/faq-20058080))
+When dehydrated, your body tries to conserve as much water as possible. The colon absorbs more water from the stool than usual, making it denser and darker. This is because less water means the bile pigments—which usually give stool a lighter brown colour—become more concentrated, resulting in a [deeper shade of brown](../is-brown-the-only-normal-color-of-poo-2025-05-19) or even [blackish appearance](../black-or-tarry-stool-when-to-worry-2025-05-30). ([Mayo Clinic](https://www.mayoclinic.org/stool-color/expert-answers/faq-20058080))
 
 ### Impact of Dehydration on Stool Consistency
 
@@ -24,15 +24,15 @@ Dehydrated stool tends to be harder and drier. This happens because the colon ex
 
 ### Other Factors Influencing Stool Colour During Dehydration
 
-While dehydration is a key factor, other issues can influence the colour of your poo. For example, dietary choices like consuming dark leafy greens, iron supplements, or certain medications can darken stool. However, persistent dark or black stools, especially with dehydration, might indicate bleeding or other medical problems that shouldn’t be ignored. ([WebMD](https://www.webmd.com/digestive-disorders/black-tarry-stool-reasons))
+While dehydration is a key factor, other issues can influence the colour of your poo. For example, dietary choices like consuming [dark leafy greens](../why-is-my-stool-green-7-common-causes-2025-04-27), [iron supplements](../black-poo-iron), or certain medications can darken stool. However, persistent dark or black stools, especially with dehydration, might indicate bleeding or other medical problems that shouldn’t be ignored. ([WebMD](https://www.webmd.com/digestive-disorders/black-tarry-stool-reasons))
 
 ## When to Seek Help
 
 It’s important to know when changes in stool colour may require medical attention. If you notice any of the following signs along with dehydration, consult a healthcare professional promptly:
 
-- **Black, tarry stools** that do not improve with hydration
+- **[Black, tarry stools](../black-or-tarry-stool-when-to-worry-2025-05-30)** that do not improve with hydration
 - **Severe abdominal pain or cramping**
-- **Blood in your stool or bright red rectal bleeding**
+- **[Blood in your stool](../red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27) or bright red rectal bleeding**
 - **Persistent constipation** lasting more than a week
 - **Dizziness or fainting** that might indicate severe dehydration
 

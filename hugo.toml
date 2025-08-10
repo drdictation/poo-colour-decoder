@@ -1,7 +1,7 @@
 baseURL = "https://poopcolor.info/"
 languageCode = "en-us"
 title = "Poo Colour Decoder"
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy"]
 enableRobotsTXT = false
 
 [params]
@@ -9,3 +9,6 @@ enableRobotsTXT = false
 
 [outputs]
   home = ["HTML", "RSS", "SITEMAP"]
+
+[markup.goldmark.renderer]
+  unsafe = true

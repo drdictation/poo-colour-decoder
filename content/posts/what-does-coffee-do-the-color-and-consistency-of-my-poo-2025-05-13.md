@@ -21,11 +21,11 @@ Coffee stimulates your colon through what's called the [gastrocolic reflex](http
 
 ### Impact on Stool Color
 
-The color of your poo mainly results from [bile pigments](https://www.ncbi.nlm.nih.gov/books/NBK546633/) and how long the stool remains in your intestines. Coffee itself doesn’t contain coloring agents that dramatically change stool color, but it can indirectly influence it by speeding up digestion. Faster transit time means bile has less time to break down, which can cause stools to appear lighter or more yellowish. Conversely, dark coffee can temporarily darken stool due to residual pigments.
+The color of your poo mainly results from [bile pigments](https://www.ncbi.nlm.nih.gov/books/NBK546633/) and how long the stool remains in your intestines. Coffee itself doesn’t contain coloring agents that dramatically change stool color, but it can indirectly influence it by speeding up digestion. Faster transit time means bile has less time to break down, which can cause stools to appear [lighter or more yellowish](../why-is-my-poo-yellow-7-common-causes-2025-04-28). Conversely, dark coffee can temporarily darken stool due to residual pigments.
 
 ### Coffee and Hydration Levels
 
-Coffee is mildly [diuretic](https://www.medicalnewstoday.com/articles/is-coffee-a-diuretic), meaning it can increase urine production and potentially contribute to [dehydration](https://www.cdc.gov/nutrition/data-statistics/plain-water-the-healthier-choice.html) if not balanced with water intake. Dehydration can cause stools to become harder and more compact, altering consistency to be dry or pellet-like. However, moderate coffee intake typically does not cause significant dehydration in habitual drinkers.
+Coffee is mildly [diuretic](https://www.medicalnewstoday.com/articles/is-coffee-a-diuretic), meaning it can increase urine production and potentially contribute to [dehydration](../what-happens-to-the-colour-of-my-poo-when-i-am-dehydrated-2025-05-05) if not balanced with water intake. Dehydration can cause stools to become harder and more compact, altering consistency to be dry or pellet-like. However, moderate coffee intake typically does not cause significant dehydration in habitual drinkers.
 
 ### Effects on the Gut Microbiome
 
@@ -40,19 +40,12 @@ Individual sensitivity to coffee compounds such as [caffeine](https://www.cdc.go
 While most changes in your poo after coffee consumption are normal, certain symptoms warrant medical attention:
 
 - Persistent [diarrhea](https://www.mayoclinic.org/diseases-conditions/diarrhea/symptoms-causes/syc-20352241) lasting more than a few days  
-- [Blood in stool](https://www.healthline.com/health/blood-in-stool) or black tarry stools  
+- [Blood in stool](../red-stool-vs-blood-in-stool-whats-the-difference-2025-05-27) or [black tarry stools](../black-or-tarry-stool-when-to-worry-2025-05-30)  
 - Sudden, unexplained [weight loss](https://www.cancer.org/cancer/cancer-causes/signs-and-symptoms/unexplained-weight-loss.html)  
 - Severe abdominal pain or cramping  
 - Signs of [dehydration](https://www.medlineplus.gov/dehydration.html) such as dizziness or dark urine  
 
 If you notice any of these, or if changes in color and consistency persist without explanation, consult your [healthcare provider](https://medlineplus.gov/choosingadoctor.html) for appropriate assessment.
-
-## Related Posts
-
-- [Why Is My Stool Green After Eating?](#)
-- [Understanding Bowel Movement Frequency and What’s Normal](#)
-- [How Hydration Affects Your Digestive Health](#)
-- [Gut Health and Your Morning Routine: Tips for Better Digestion](#)
 
 ## Try It Yourself
 
