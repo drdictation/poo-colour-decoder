@@ -9,7 +9,6 @@ type: "page"
 
 Dr. Chamara Basnayake is a leading gastroenterologist and the founder of PoopColor.info. With over 15 years of experience in digestive health, Dr. Basnayake has dedicated his career to demystifying complex medical topics and making gut health accessible to everyone.
 
-*Please update this section with your specific credentials, such as your medical school, residency, fellowships, and any board certifications. This is a critical component for establishing E-E-A-T.*
 
 ## Our Mission
 
